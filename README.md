@@ -1,0 +1,2 @@
+# emacs-training
+Emacs training
