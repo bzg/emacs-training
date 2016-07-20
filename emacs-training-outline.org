@@ -1,0 +1,1200 @@
+#+TITLE: GNU Emacs training
+
+* Line-up for wednesday
+
+- emacs movement
+- org-mode movement
+- functions
+- emacs history
+
+|                                           | Time | Spent |
+|-------------------------------------------+------+-------|
+| Moving the cursor                         |   10 |       |
+| Org-mode quick start                      |   20 |       |
+| Elisp 15 minutes tutorial                 |   20 |       |
+| Regular expressions                       |   20 |       |
+| Building regular expressions              |   30 |       |
+| Interactive search                        |   30 |       |
+| Basic (re-searching)                      |   30 |       |
+| Deleting, killing, yanking                |   30 |       |
+| Interactive macros                        |   30 |       |
+| Renaming files with a macro and a counter |      |       |
+| Using the mark                            |      |       |
+|-------------------------------------------+------+-------|
+| Functions, lambda and commands            |   30 |       |
+| Manipulating lists and their elements     |   30 |       |
+| Mapping over a list                       |   30 |       |
+| Programmatic buffers manipulations        |   30 |       |
+| Defining variables and functions          |   30 |       |
+| Defining variables and options            |   30 |       |
+| Using interactive                         |   30 |       |
+| File cleanup                              |      |       |
+|-------------------------------------------+------+-------|
+| Emacs history overview                    |      |       |
+| Emacs directory overview                  |      |       |
+| Emacs vocabulary                          |      |       |
+| Modifiers and keybindings                 |      |       |
+|-------------------------------------------+------+-------|
+| Total minutes                             |  180 |     0 |
+#+TBLFM: @24$2=vsum(@3..@-1)::@25$3=vsum(@3..@-1)
+
+* Emacs generalities
+
+** Emacs history overview
+
+- 1976 :: TECMAC and TMACS, a pair of "TECO-macro realtime editors."
+     by Guy Steele, Dave Moon, Richard Greenblatt, Charles Frankston,
+     et al.
+
+- 1978 :: Multics Emacs by Bernie Greenberg. Written in MacLisp; also
+     used Lisp as its extension language.
+
+- 1981 :: Gosling Emacs : by James Gosling : written in C; with
+     "Mocklisp" as its extension language.
+
+- 1985 :: GNU Emacs 13.0? (20-mar-85) written in Spice Lisp (CMU
+     Common Lisp) by Richard Stallman.  initial public release?
+
+- 1986 :: GNU Emacs 18.24 beta (02-oct-86).
+
+- 1992 ::  MULE 0.9.0b (4-mar-92) "Multilingual Enhancements to
+     Emacs": support for input methods and various languages including
+     Japanese, Chinese, Korean, Greek, Hebrew, and Cyrillic.
+
+- 1992 :: Lucid Emacs 19.0 (??-apr-92) by Jamie Zawinski et al.
+
+- 1994 :: XEmacs 19.11 (13-sep-94) Lucid Emacs -> XEmacs renaming.
+     now maintained by Chuck Thompson and Ben Wing.
+
+- 1998 :: XEmacs 20.4 (28-feb-98) first reasonably stable release with
+     MULE support. XEmacs "core" and "packages" now packaged
+     separately.
+
+- 2001 :: XEmacs 21.4.0 (16-apr-01) (stable / maintenance branch)
+     Maintained by Stephen Turnbull.  Shipped by Red Hat, Debian,
+     Mandrake, etc.
+
+- 2002 :: 2002  GNU Emacs 21.2 (16-mar-02).
+
+- 2008 :: Stefan Monnier and Chong Yidong take over maintenance.
+
+- 2014 :: On November 11, 2014, development was moved to Git by ESR.
+
+- 2015 :: John Wiegley takes over maintainance.
+
+As of early 2014, GNU Emacs has had 579 individual commiters
+throughout its history.
+
+https://www.jwz.org/doc/emacs-timeline.html
+
+** Emacs directory overview
+
+- `src' ::  holds the C code for Emacs (the Emacs Lisp interpreter and
+     its primitives, the redisplay code, and some basic editing
+     functions).
+
+- `lisp' :: holds the Emacs Lisp code for Emacs (almost everything
+     else).
+
+- `leim' :: holds the library of Emacs input methods, Lisp code and
+     auxiliary data files required to type international characters
+     which can't be directly produced by your keyboard.
+
+- `lib-src' :: holds the source code for some utility programs for use
+     by or with Emacs, like movemail and etags.
+
+- `etc' :: holds miscellaneous architecture-independent data files
+     Emacs uses, like the tutorial text and the Zippy, the Pinhead
+     quote database.  The contents of the `lisp', `leim', `info',
+     `man', `lispref', and `lispintro' subdirectories are
+     architecture-independent too.
+
+- `info' :: holds the Info documentation tree for Emacs.
+
+- `doc/emacs' :: holds the source code for the Emacs Manual.  If you
+     modify the manual sources, you will need the `makeinfo' program
+     to produce an updated manual. `makeinfo' is part of the GNU
+     Texinfo package; you need version 4.6 or later of Texinfo.
+
+- `doc/lispref' :: holds the source code for the Emacs Lisp reference
+     manual.
+
+- `doc/lispintro' :: holds the source code for the Introduction to
+     Programming in Emacs Lisp manual.
+
+- `msdos' :: holds configuration files for compiling Emacs under
+     MS-DOS.
+
+- `nt' :: holds various command files and documentation files that
+     pertain to building and running Emacs on Windows
+     9X/ME/NT/2000/XP.
+
+- `test' :: holds tests for various aspects of Emacs's functionality.
+
+** Emacs vocabulary
+
+- active region
+- buffer
+- case folding
+- character
+- cursor
+- docstring
+- echo area
+- face
+- filling
+- fontification
+- frame
+- fringe
+- function/command
+- headline
+- headline
+- indent
+- init file
+- inserting
+- kill
+- kill ring
+- line wrap
+- local/global
+- mark
+- menu-bar
+- minibuffer
+- modeline
+- narrow
+- overlay properties
+- point
+- prefix argument
+- region
+- scroll-bar
+- text properties
+- tool-bar
+- transient mark
+- variable/option
+- window
+- yank
+
+** Modifiers and keybindings
+
+*** Modifiers
+
+- C- : hold the =Control= key
+- M- : hold the =Meta/Alt= key
+- DEL : hold the =Backspace= key
+- RET : hold the =Return= key
+- SPC : hold the =Space= key
+- ESC : hold the =Escape= key
+- TAB : hold the =Tab= key
+
+*** General keybinding conventions
+
+ - C-x [character] :: mode-independant keybindings.
+
+ - C-c ... :: mode-dependant keybindings.
+
+ - C-c [character] :: user-reserved keybindings.
+
+*** Keybindings
+
+ - M-y : yank-pop
+ - M-w : kill-ring-save
+ - C-y : yank
+ - C-w : kill-region
+ - C-x C-b : list buffers
+ - C-x f : set fill column
+ - C-x b : switch to buffer
+ - C-l : recenter-top-bottom
+ - C-a : beginning-of-line
+ - C-e : end-of-line
+ - M-< : beginning-of-buffer
+ - M-> : end-of-buffer
+ - M-{ : backward-paragraph
+ - M-} : forward-paragraph
+ - M-a : backward-sentence
+ - M-e : forward-sentence
+ - M-b : backward-word
+ - M-f : forward-word
+ - C-h k : describe-key
+ - C-h v : describe-variable
+ - C-h f : describe-function
+ - M-= : count-words-region
+ - C-x l : count-lines-page
+ - C-x r m : bookmark-set
+ - C-x r s : copy-to-register
+ - C-x r w : window-configuration-to-register
+ - C-x r l : bookmark-bmenu-list
+ - C-x r i : insert-register
+ - C-x r j : jump-to
+ - C-u C-x = : what-cursor-position
+ - C-x 2 : split-window-below
+ - C-h i : info
+
+** Finding and saving files
+
+- =C-x C-f= : find file in the current buffer
+- =C-x C-s= : save current buffer, possibly in a file
+- =C-x s= : save all buffers
+- =C-x C-b= : list buffers
+- =C-x b= : find a buffer or create a new one
+- =C-x d= : dired
+
+** Moving the cursor
+
+- =C-f/b= : move one character forward/backward
+- =C-a/e= : move to the beginning/end of line
+- =M-a/e= : move to the beginning/end of sentence
+- =M-f/b= : move one word forward/backward
+- =C-<up/down>= : move one paragraph up/down
+- =C-<left/right>= : move one character left/right
+
+See sentence end definition: C-h v sentence-end TAB
+
+** Main modes and libraries
+
+- bookmark
+- calc
+- calendar
+- dired (and dired-x)
+- doc-view
+- electric-indent-mode
+- electric-pair-mode
+- epa-mode
+- ERC
+- Gnus
+- linum-mode
+- org-mode
+- register
+- info mode
+
+** Interactive macros
+
+- =C-x (= : start defining a macro
+- =C-x )= : stop defining a macro
+- =C-x e= : call the last defined macro
+- =C-x C-k C-i= : to create a counter and insert its value
+- =C-x C-k b= : bind the macro to a key
+- =C-x C-k RET=: edit last macro in a buffer
+- =C-x C-k n=: name the last macro
+
+Example : =C-x ( aaa C-x C-k C-i C-x )=
+
+** Deleting, killing, yanking
+
+- =C-d= : delete-char
+- =M-d= : kill-word (notice kill != delete)
+- =C-k= : kill-line (see kill-whole-line)
+- =M-k= : kill-sentence
+
+See also:
+
+- kill-whole-line
+- kill-read-only-ok
+- copy-region-as-kill
+- copy-rectangle-as-kill
+- copy-line
+
+** Interactive search
+
+Go to the main Info buffer with =C-h i=.  Hit =d= to make sure you are at
+the top-level of the Info documentation, and go at the beginning of
+the buffer with =M-<=.
+
+Perform an incremental search for "lisp" with =C-s lisp=.
+
+Hit =RET= to deactivate the search and the search matches highlighting.
+
+Hit =C-s C-s= to search for the last search string again.
+
+Hit =M-e= to edit the search string (change it to "mode") and RET to go
+back to the search mode.
+
+Hit =M-p= to browse the search history and RET to search the selected
+string again.
+
+Restart.
+
+Hit =C-s= to start the search.
+
+Hit =C-q C-j= to search for the newline character.
+
+Hit =C-g= to abort the search.
+
+Hit =C-s= and search for "Mail" : notice only "Mail" will be matched,
+not "mail".
+
+Hit =C-s= and =M-c= to toggle case folding.
+
+Hit =C-s= and =M-s SPC= to toggle case folding: when matching spaces
+loosely, you can search for a string like "mail client" and still
+match the "mail client" string.
+
+Try searching for "maii" instead of "mail" and then hit =DEL= to edit
+the search string by deleting the last character.
+
+Hit =C-s= and search for "mail".  Hit RET on the first occurrence and go
+one word backward with =M-b=.  Now hit =C-s C-w= to search for the word at
+point.  Try again with =C-s C-w C-w= to search for several words at
+point.
+
+Hit =C-s C-M-y= to search for the character at point.  Hit =C-M-y C-M-y=
+to add the next two characters to the search.  Hit =C-M-w= to remove the
+last character from the search string.
+
+Hit =C-s= to start the search.  Hit =M-b= directly, without hitting =RET=.
+Hit =C-SPC M-f M-w= to copy the word at point.  Go back to the beginning
+of the word and hit =M-d= to do the same: since the buffer is read-only,
+you can copy the word at point directly like this.
+
+Now hit =C-s= again, they =C-y= to "yank" the text in the search area.
+
+Hit =C-s C-M-i= to complete over previous searches.
+
+In a folded org-mode buffer, search for some invisible text: the
+matched string is automatically unfolded when the point moves to it.
+
+Now go back to the folded mode and hit =C-s M-s i= to search for visible
+text only.  Invisible text won't be matched.
+
+Hit =M-<= and =C-s= search for "mail".  Now hit =M-s o= to list lines where
+"mail" occurs.
+
+Hit =C-s= and =M-s r= to switch to regular expression search.
+
+Hit =C-s C-h b= to browse the search options.
+
+** Text expansion and templates
+
+- =M-TAB= to run M-x completion-at-point RET
+- abbrev-mode : =C-x a g= and =C-x a i g= (see also =C-x a l=)
+- dabbrev-expand : =M-/=
+- pcomplete : to use when programming a mode
+- yasnippet : template expansion
+
+* Emacs Lisp 1: the basics
+
+** 15 minutes tutorial
+
+http://emacs-doctor.com/learn-emacs-lisp-in-15-minutes.html explores
+some of the basic functions of Emacs lisp.
+
+- symbolic expressions (=sexps=)
+- nesting parentheses to combine =sexps=
+- evaluating =sexps=
+- =C-j= and =C-x C-e=
+- variables and =setq=
+- inserting text
+- insert with more than one argument
+- combining =sexps= into functions
+- evaluating functions
+- switching to a new buffer
+- combining =sexps= with =progn=
+- erasing buffer's content
+- switching to the other window
+- using =format=
+- using =let=
+- reading strings from the minibuffer
+- introducing lists
+- =car= and =cdr=
+- list mutability: using =push=
+- =map= over a list with =mapcar=
+- moving to a point: =goto-char=
+- searching with =search-forward=
+- replacing with =replace-match=
+- using regular expressions in search with =re-search-forward=
+- adding text properties with =add-text-properties=
+- =C-h v= and =C-h f= to explore variables and functions
+- =C-h i m elisp= to explore the Elisp manual
+
+** Types and variables
+
+*** Elisp types
+
+- integer
+- floating-point
+- character
+- symbol
+- sequence (lists and arrays)
+- cons cell
+- array
+- string
+- vector
+- char-table
+- hash-table
+- function
+- primitive function
+- byte-code
+- autoload
+- macro
+- boolean
+
+*** Defining variables and functions
+
+- defvar : define ("initialize") a variable
+- defconst : define a constant
+- setq : (setq [SYM VAL]...)
+- setq-local : (setq-local VAR VAL)
+- defvar-local : (defvar-local VAR VAL &optional DOCSTRING)
+- setf : (setf (cadr x) y) <=> (setcar (cdr x) y)
+- setcar : (setcar CELL NEWCAR)
+- setcdr : (setcdr CELL NEWCDR)
+- defun : define a function
+- defstruct : define an "inline" function
+- defmacro : define a macro
+- defcustom : define an option (customizable variable)
+- boundp : check if a variable is set
+- fboundp : check if a function is set
+
+** Manipulating lists
+
+See [[*Manipulating lists and their elements][Manipulating lists and their elements]].
+
+*** Fonctions
+
+- cons cell
+- consp, atom, listp, nlistp, null
+- car (or first), car-safe
+- cdr, cdr-safe
+- pop
+- caar, cadr, cddr, cdar
+- nth, nthcdr
+- last
+- safe-length
+- list
+- make-list
+- append
+- add-to-list
+- push
+- memq
+- delq
+- remq
+- member
+- remove
+- remove-if
+- alist
+- plist
+- map
+- mapc
+- mapcar
+- mapconcat
+
+*** Alist and plist
+
+** Functions, lambda and commands
+
+*** Definitions
+
+A function is the name of a sexp, possibly accepting arguments,
+returning the value of evaluating the sexp.
+
+A command is an interactive function.
+
+A lambda is an anonymous function.
+
+*** Examples
+
+#+BEGIN_SRC emacs-lisp
+(defun my-function () ; no argument
+  "A docstring."      ; optional
+  (+ 1 1))
+
+;; Check whether the symbol is bound to a function
+(fboundp 'my-function)
+
+;; Calling the function
+(my-function)
+
+(defun my-function-with-argument (first-argument) ; no argument
+  "A docstring."                                  ; still optional
+  (message "Hello %s!" first-argument))           ; assuming a string
+
+(my-function-with-argument "Bastien")
+
+(defun my-command (name)
+  "A docstring"
+  (interactive "sYour name: ")
+  (message "Hello %s!" name))
+
+(call-interactively 'my-function)
+;; => error, as the function is not a command
+
+(call-interactively 'my-command)
+;; => return the name
+
+;; M-x my TAB does not show the function
+
+;; A useless lambda
+(lambda () (message "A simple lambda"))
+
+;; A useless lambda command
+(lambda () (interactive) (message "A simple lambda"))
+
+;; A useless lambda command with one interactive arg
+(lambda (n) (interactive "s") (message "Hello %s " n))
+
+;; Call a lambda-command interactively
+(call-interactively (lambda (n) (interactive "sName? ") (message "Hello %s " n)))
+
+;; Bind a key to a lambda-command
+(define-key global-map (kbd "C-M-?")
+   (lambda (n) (interactive "sName? ") (message "Hello %s " n)))
+#+END_SRC
+
+*** Calling functions with programs (interactively)
+
+#+BEGIN_SRC emacs-lisp
+(setq f 'list)
+;; => list
+
+(funcall f 'x 'y 'z)
+;; => (x y z)
+
+(funcall f 'x 'y '(z))
+;; => (x y (z))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq f 'list)
+;; => list
+(apply f 'x 'y 'z)
+;; => error→ Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+;; => 10
+(apply '+ '(1 2 3 4))
+;; => 10
+(apply 'append '((a b c) nil (x y z) nil))
+;; => (a b c x y z)
+#+END_SRC
+
+See also =funcall-interactively=.
+
+** Recursive functions
+
+See [[*Use a recursive function to implement "flatten"][Use a recursive function to implement "flatten"]].
+
+** Dynamic binding
+
+#+BEGIN_SRC emacs-lisp
+(defvar x -99)
+;; => x
+
+(defun getx () x)
+(getx)
+;; => -99
+
+(let ((x 1)) (getx))
+;; => 1
+#+END_SRC
+
+See the [[info:elisp#Dynamic%20Binding][info manual]]:
+
+: When we call ‘getx’ from within a ‘let’ form in which ‘x’ is
+: (dynamically) bound, it retrieves the local value (i.e., 1).  But when
+: we call ‘getx’ outside the ‘let’ form, it retrieves the global value
+: (i.e., −99).
+
+See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not abuse dynamic binding.
+
+** Mark, Point, Buffer, Insertions
+
+- point-at-*
+
+** Regular expressions
+
+*** Syntax
+
+‘.’ (Period) is a special character that matches any single character
+     except a newline.
+
+‘*’ is a postfix operator that means to match the preceding regular
+    expression repetitively as many times as possible.
+
+‘+’ is a postfix operator, similar to ‘*’ except that it must match
+    the preceding expression at least once.
+
+‘?’ is a postfix operator, similar to ‘*’ except that it must match
+    the preceding expression either once or not at all.
+
+‘*?’, ‘+?’, ‘??’ These are “non-greedy” variants of the operators ‘*’, ‘+’ and ‘?’.
+
+‘[ … ]’ is a “character alternative”
+
+‘[^ … ]’ This matches any character except the ones specified.
+
+‘^’ When matching a buffer, ‘^’ matches the empty string, but only at
+    the beginning of a line in the text being matched (or the
+    beginning of the accessible portion of the buffer).
+
+‘$’ is similar to ‘^’ but matches only at the end of a line.
+
+‘\’ has two functions: it quotes the special characters (including
+    ‘\’), and it introduces additional special constructs.
+
+*** Group matching
+
+#+BEGIN_SRC emacs-lisp
+(defun my-find-letters-numbers ()
+  (interactive)
+  (when (re-search-forward "\\([a-zA-Z]+\\)\\([0-9]+\\)" nil t)
+    (message "String matched: %s -- Letters: %s -- Numbers: %s"
+	     (match-string 0)
+	     (match-string 1)
+	     (match-string 2))))
+
+(defun my-boldify ()
+  (interactive)
+  (while (re-search-forward "mail" nil t)
+    (add-text-properties (match-beginning 0)
+			 (match-end 0)
+			 (list 'face 'bold))))
+#+END_SRC
+
+*** References
+
+- re-search-forward
+- match-beginning
+- match-end
+- case-fold-search
+
+** Elisp macros (defmacro)
+
+#+BEGIN_SRC emacs-lisp
+(setq x 3)
+
+;; (inc x) <=> (setq x (1+ x))
+(defmacro inc (var)
+   (list 'setq var (list '1+ var)))
+
+(inc x)
+;; => 4
+
+(macroexpand '(inc x))
+;; => (setq x (1+ x))
+
+;; (inc2 x) <=> (inc x)
+(defmacro inc2 (var)
+   `(setq ,var (1+ ,var)))
+
+(inc2 x)
+;; => 5
+#+END_SRC
+
+See =org-preserve-lc= for ,@body.
+
+** TODO Using the debugger (1)
+
+* Emacs Lisp 2: programming a new mode
+
+** Mode basics
+
+- Major and minor mode
+- derived-mode
+- syntax highlighting
+- kill-all-local-variables
+- modeline (global-mode-string)
+- keybindings (define-key)
+- menu (easy-menu-define)
+- defcustoms
+- provide
+- require
+
+** TODO Using derived-mode
+** TODO Menus, modeline, headline and keybindings
+** TODO Fontification
+
+- examining text properties with =C-u C-x ==
+- set text-properties
+
+** TODO The syntax-table
+** TODO Customization
+
+* Emacs Lisp 3: advanced Elisp and mode programming
+
+** TODO Lisp 1 and Lisp 2
+** TODO Advice and hooks
+** TODO Autoloading functions
+** TODO Using lexical-binding
+** TODO Overlay properties
+** TODO Tabulated display
+** TODO Major hooks
+** TODO The Emacs debugger (2)
+** TODO The Emacs profiler
+
+* Org-mode 1: basic functions, workflows, reports
+
+** org-mode as an outliner
+
+*** Org mode syntactic elements
+
+- headline
+- subtree
+
+*** Org mode folding
+
+- initial folding state
+
+*** Org mode options
+
+** org-mode to write and publish documents
+
+- options
+- blocks
+- publishing projects
+
+** org-mode as TODO lists manager
+** Agendas views
+
+- predefined agenda views
+- custom agenda views
+- agenda blocks
+
+** TODO Exploring workflows (GTD, etc.)
+
+* Org-mode 2: Org table and Org Babel
+
+** TODO Main spreadsheet functionalities
+** TODO Linking tables
+** TODO Embed and execute code from org-mode
+** TODO Get the result of embedded code
+** TODO Use Org Babel to export code et results
+
+* Miscellaneous
+
+** TODO Writing an Org-mode exporter
+** TODO Emacs package management
+** TODO Using magit
+** TODO flycheck
+** TODO semantic-refactor, xref
+** TODO Interesting utilities
+
+- proced
+** TODO thing-at-point
+
+- find the word at point
+
+** TODO seq.el
+** TODO How to contribute to GNU Emacs?
+** TODO Emacs configuration file organization
+
+* Exercises
+
+** Basic (re-)searching
+
+- open a buffer
+- insert some text
+- go back to the beginning of the buffer
+- go back to the beginning of the buffer using =M-x=
+- search for part of the text using incremental search
+- search for part of the text using a regular expression
+- switch from search to i-search
+- re-search for another part of the string
+- go back to the beginning of the buffer
+- re-search again for the previous search
+- re-search again and edit the search string
+
+** Renaming files with a macro and a counter
+
+- C-x d [go to a directory with fake files] RET
+- C-x C-q to switch off read-only in dired
+- create a macro to rename file using a counter
+
+** Using the mark
+
+- find a file
+- set the mark at some point
+- move around and see the activated region
+- set the mark in another place
+- copy ("kill") the region
+- set the mark
+- deactivate the transient region immediately
+- go the last mark position
+- set the mark
+- store the position in a register
+- find another file
+- go back to the stored position
+
+** File cleanup
+
+- open a .el file
+- go to the beginning of the buffer
+- clean up trailing whitespaces
+- clean up duplicate lines
+- downcase a region
+- find camelcase words
+- create a macro to downcase all camel words
+- convert 2+ blank lines to one blank line
+
+** Selecting and moving paragraphs in org files
+
+- open an =.org= file
+- add a paragraph
+- select the paragraph (=M-h=)
+- yank the paragraph several times
+- go a the beginning of a paragraph
+- move it down several time
+- try to do the same with list items
+- try to do the same with subtrees
+- try =C-c @= to select the current subtree
+- perform a replacement =M-%= in the selected subtree
+
+** Org table manipulations
+
+- create a table (=org-table-create=)
+- select the table
+- unselect the table
+- move from cell to cell with TAB
+- M-<up/down> to move lines
+- M-<lef/right> to move columns
+- =org-table-transpose-table-at-point=
+- =C-c }= to toggle coordinates
+- insert a new column
+- insert a new row
+
+** Org spreadsheets formulas
+
+- create a table (=org-table-create=)
+- add some names in the first row
+- add some disciplines in the first column
+- add numbers in the lines below (e.g. marks for exams)
+- compute the mean by discipline (=C-c ==)
+- compute the mean by student (=C-u C-c ==)
+- increment a value in the line below
+- create a new column at the end
+- compute the mean using an Elisp function
+- create a new column at the end
+- insert the value of the first column using an Elisp function
+
+** Org list manipulation
+
+- make a list
+- use M-RET to create a new item
+- M-<up/down> to move items up/down
+- M-<lef/right> to promote/demote items
+- go in the middle of the last item
+- create a new item by splitting the current one
+- turn the current item into a checkbox item
+- tick the current item checkbox
+- turn the list level to a checkbox list
+- tick all checkboxes
+- convert one item into a headline
+- select all the list
+- convert all list items into headlines
+- sort the list alphabetically
+
+** Add keybindings
+
+- add a fundamental-mode keybinding
+- add a global keybinding
+- unbind a key globally
+
+** Global mode setting and local variables
+
+- open a .txt file
+- change =fill-column= using a local variable
+
+** Narrowing and checking point
+
+- narrow to the current region
+- widen
+- check (point-min) and (point-max)
+- narrow to the current paragraph
+- narrow to the current defun
+- narrow to the current sexp
+- write a function telling whether the buffer is narrowed
+
+*** Functions
+
+- mark-sexps
+- buffer-narrowed-p
+
+** Saving various buffer state
+
+- Find the last word of the buffer, display it for 2 second (with the
+  cursor on the first character of this last word), then restore the
+  initial cursor position.
+
+- When in a narrowed state, display the first word in the invisible
+  part of the buffer, display it (with the cursor at the beginning of
+  the word), then restore the narrowed state and the cursor position.
+
+- Find the last word before the end of the current sentence.  Find the
+  next digit.  Return the position of the first character of the word
+  in the first match.
+
+*** Functions
+
+- save-excursion
+- save-restriction
+- save-match-data
+- save-window-excursion
+- match-beginning
+- match-end
+- match-string
+
+** Interactive buffer manipulations
+
+- list buffers
+- mark several buffers for saving
+- perform the saving
+
+*** Fonctions
+
+- list-buffers
+
+** Programmatic buffers manipulations
+
+- write a function that insert the names of all live buffers
+- write a function that insert those names in alphabetic order
+- write a function that insert those names by buffer-size
+- write a function that displays something in a temporary buffer
+- write a function that creates a new buffer and switches to it,
+  possibly in a new window
+- write a function that display a new buffer in a new window while
+  asking directly for something in the minibuffer (the info buffer
+  should disappear after the user entered a string)
+
+*** Functions
+
+- buffer-list
+- buffer-size
+- buffer-string
+- buffer-substring
+- get-buffer-create
+- sort
+- switch-to-buffer-other-window
+- with-buffer-modified-unmodified
+- with-current-buffer
+- with-current-buffer-window
+- with-output-to-string
+- with-output-to-temp-buffer
+- with-temp-buffer
+- with-temp-buffer-window
+
+** Navigating in Elisp code
+
+*** Keybindings
+
+- C-M-a: beginning-of-defun
+- C-M-e: end-of-defun
+- C-M-x: eval-defun
+- C-u C-M-x: eval-defun and edebug it
+- C-M-f: forward-sexp
+- C-M-b: backward-sexp
+- C-M-u: forward-sexp
+- C-M-d: down-list
+- C-M-k: kill-sexp
+- C-M-p: backward-list
+- C-M-n: forward-list
+
+** Handling errors in code
+
+- Write a function which reads a string and return an error when the
+  string contain a certain character.
+
+- Write a function that reads two numbers p and q and return a result
+  when it makes sense, or an error with a custom message when q=0.
+
+- Write a function that reads two numbers p and q and return the
+  result when it makes sense, and ask for another digit when the
+  second is 0.
+
+*** Functions
+
+- condition-case
+- unwind-protect
+- ignore-errors
+- user-error
+- error
+
+** Defining variables and options
+
+Define a variable.
+
+Get the value of the variable.
+
+Add a docstring to the variable.
+
+Convert the variable into an option.
+
+Customizing the value of the option using customize-variable.
+
+Add a custom group.
+
+Put the new option in this group.
+
+Visit the group and set the value of the variable from here.
+
+Define a function.
+
+Add a docstring to the function.
+
+Run M-x checkdoc RET to check the syntax of the docstring.
+
+Set a buffer-local variable.
+
+Change the value of the variable in the buffer.
+
+Check the value of the variable in two different buffers.
+
+** Using interactive
+
+Create a function that asks for a name and returns "Hello [name]!" in
+the minibuffer and pause for two seconds.
+
+Call the function.
+
+Make the function interactive and call the command.
+
+Add an optional raw prefix argument to the function and display the
+value of the prefix argument in the message.
+
+Use =current-prefix-arg= to display the value of the prefix argument.
+
+Use (interactive "s...") to ask for a name and display it.
+
+Use (interactive "B...") to ask for a buffer and display it.
+
+*** Examples
+
+#+BEGIN_SRC emacs-lisp
+(defun my-hello (&optional arg)
+  "Display your name."
+  (interactive "P")
+  (let ((name (read-from-minibuffer "What's your name? ")))
+    (message "Hello %s! [arg is %s]" name arg)
+    (sit-for 1)
+    (message "The prefix argument value is %s" current-prefix-arg)
+    ;; (beep)
+    ))
+
+(defun my-hello2 (name)
+  (interactive "sWhat's your name? ")
+  (message "Hello %s!" name))
+
+(defun my-visit-buffer (buf)
+  (interactive "BWhat buffer? ")
+  (switch-to-buffer-other-window buf))
+#+END_SRC
+
+** Manipulating strings
+
+Make a list of 20 (possibly identical) characters.
+
+Create a new string by concatenating the list of characters.
+
+Return a string of the first 5 characters from this string.
+
+Store the buffer string in a variable.
+
+Replace tabs by spaces in this string.
+
+Return the number of lines in this string.
+
+** Building regular expressions
+
+Match every letter from a-e.
+
+Match every letter from a-e and A-E.
+
+Match exactly one digit followed by at least two letters.
+
+Match a number from 3 to 6 digits followed by a dot.
+
+Match an opening parenthesis.
+
+Match the content of a pair of square brackets and return it.
+
+Match every character in the buffer below point.
+
+** Manipulating lists and their elements
+
+Make a list of five strings.
+
+Return the first element of the list.
+
+Return the last element of the string.
+
+Return the number of elements of the list.
+
+Store the list in a variable.
+
+Replace the car of the list.
+
+Replace the cdr of the list.
+
+Return the 4th element of the list.
+
+*** Hints
+
+(setq my-list '("a" "b" "c" "d" "e"))
+(setcar my-list "x")
+(setcdr my-list "y")
+(setcar (nthcdr 3 my-list) "x")
+(eval 'my-list)
+
+** Mapping over a list
+
+Make a list of strings.
+
+Add a new string at the beginning of the list.
+
+Add a new string at the end of the list.
+
+Concatenate all strings in this list.
+
+For each string in this list, append "_" and return the new list.
+
+Make a list of random numbers.
+
+Sort the list by numerical order.
+
+Write a function that create a random list of numbers sorted by
+numerical value.
+
+*** Hints
+
+- make-list
+- random
+- (sort '(1 2 4 3) '<)
+
+** Use a recursive function to implement "flatten"
+
+#+BEGIN_SRC emacs-lisp
+(defun flatten (x)
+  (cond ((null x) nil)
+	((listp x) (append (flatten (car x)) (flatten (cdr x))))
+	(t (list x))))
+
+(flatten '((1 2) ((3 4))))
+#+END_SRC
+
+** Org-mode quick start
+
+Create an .org file.
+
+Insert a new heading with =M-RET=.
+
+Make it a TODO item with =C-c C-t=.
+
+Switch the todo state from TODO to DONE with =S-<right>=.
+
+Use =C-c C-q= to add a tag.
+
+Write a paragraph and a one-line todo (as a paragraph).
+
+Convert the current line to a list with C-c -.
+
+Convert the current list item to a checkbox with C-u C-c C-c.
+
+Move the list up with =M-<up>=.
+
+Sort the list alphabetically with =C-c ^ a=.
+
+Create a new todo.
+
+Set it to be done today with =C-c C-s RET=.
+
+View the agenda for the week with =C-c a a=.
+
+View the list of all todo tasks with =C-c a t=.
+
+Insert a code block by entering =< s TAB= at the beginning of a line.
+
+Add emacs-lisp so that the code block knows we are writing Elisp code.
