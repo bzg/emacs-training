@@ -315,6 +315,7 @@ https://www.jwz.org/doc/emacs-timeline.html
  - C-x l : count-lines-page
  - C-x r m : bookmark-set
  - C-x r s : copy-to-register
+ - C-x r SPC : point-to-register
  - C-x r w : window-configuration-to-register
  - C-x r l : bookmark-bmenu-list
  - C-x r i : insert-register
@@ -461,8 +462,10 @@ Hit =C-s C-h b= to browse the search options.
 - =M-TAB= to run M-x completion-at-point RET
 - abbrev-mode : =C-x a g= and =C-x a i g= (see also =C-x a l=)
 - dabbrev-expand : =M-/=
-- pcomplete : to use when programming a mode
+- hippie-expand : 
 - yasnippet : template expansion
+- pcomplete : to use when programming a mode
+
 * Emacs Lisp 1: the basics
 
 ** 15 minutes tutorial
@@ -876,6 +879,7 @@ See =org-preserve-lc= for ,@body.
 ** TODO Use Org Babel to export code et results
 * Miscellaneous
 
+** TODO Tramp
 ** TODO Writing an Org-mode exporter
 ** TODO Emacs package management
 ** TODO Using magit
@@ -1317,6 +1321,10 @@ Use =C-c C-q= to add a tag.
 Write a paragraph and a one-line todo (as a paragraph).
 
 Convert the current line to a list with C-c -.
+
+Convert the current line to a heading with C-c *.
+
+Convert back to a list item with C-c -.
 
 Convert the current list item to a checkbox with C-u C-c C-c.
 

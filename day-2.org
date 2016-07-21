@@ -1,19 +1,130 @@
 #+TITLE: Day 2
 
-* switch control and tab
-* registers
-* interactive macros
-* eq and equal
+* Switch control and tab
 
-eq = same object
-equal = same content (have equal component)
+: !
+: ! Swap Caps_Lock and Control_L
+: !
+: remove Lock = Caps_Lock
+: remove Control = Control_L
+: keysym Control_L = Caps_Lock
+: keysym Caps_Lock = Control_L
+: add Lock = Caps_Lock
+: add Control = Control_L
 
-* elisp types
-* dynamic binding
+* Emacs general useful keybindings
+
+- C-x i : insert-file
+- C-x h : mark-whole-buffer
+- M-h : org-mark-element (ou le paragraphe hors org-mode)
+- #+include: xmodmaprc
+- C-x C-b : list-buffers (s d x m S)
+- C-h m : to check the major and minor modes documentation
+- C-x s : save-some-buffers
+- C-x } : enlarge-window-horizontally
+- C-x { : shrink-window-horizontally
+- M-x proced RET (derived from tabulated-list-mode)
+- C-c ^ : to go up one level
+- list-packages
+- C-h i d m : navigating info
+- M-x beacon-mode
+- M-x bm - overriden by C-x C-@ ?
+- M-x visible-mode
+- C-x d et C-u C-x d
+- dans dired: + pour créer un répertoire
+- dans dired: g
+- dans dired: % m
+- dans dired: C-x C-q pour pouvoir éditer
+- M-x eshell RET (pour faire un touch)
+- M-% : query-replace
+- C-M-% : query-replace-regexp
+- get help
+  - C-x C-k C-h
+  - C-x C-h
+  - C-x 8 C-h
+- delete-trailing-whitespace
+- delete-duplicate-lines
+
+* Manipulating windows
+
+- C-x o : other-window
+- C-x 1 : delete-other-windows
+- C-x 2 : split-window-horizontally
+- C-x 3 : split-window-vertically
+- C-x 0 : delete-window
+- C-x + : balance-windows
+
+* Exploring Buffer-menu-mode-map
+
+- see Buffer-menu-mode docstring
+- conventions for displaying keybindings
+  - \\<Buffer-menu-mode-map>
+  - \\[buffer-menu-command]
+- bind a command locally
+  - (define-key Buffer-menu-mode-map (kbd "M-o") 'Buffer-menu-view-other-window)
+- global-unset-key
+- local-unset-key
+
+Other functions for list-buffers:
+
+- auto open of .gz files
+- ! in dired to perform the relevant action
+- dired-guess-shell-alist-user
+
+* Registers, bookmarks and org-mode links
+
+** Registers
+
+ - C-x r s : copy-to-register
+ - C-x r i : insert-register
+ - C-x r SPC : point-to-register
+ - C-x r j : jump-to
+ - C-x r w : window-configuration-to-register
+ - M-x register-list (package)
+ - M-x list-registers RET
+
+** Bookmarks
+
+ - C-x r m : bookmark-set
+ - C-x r M : bookmark-set-no-overwrite
+ - C-x r b : bookmark-jump
+ - C-x r l : bookmark-bmenu-list
+
+** Org links
+
+Global org-mode keys:
+
+#+BEGIN_SRC emacs-lisp
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
+#+END_SRC
+
+- C-c C-l : org-insert-link
+- C-c C-o : org-open-at-point
+
+* Interactive macros
+
+- =C-x (= : start defining a macro
+- =C-x )= : stop defining a macro
+- =C-x e= : call the last defined macro
+- =C-x C-k b= : bind the macro to a key
+- =C-x C-k C-i= : to create a counter and insert its value
+- =C-x C-k RET=: edit last macro in a buffer
+- =C-x C-k C-n=: cycle through macros
+- =C-x C-k n=: name the last macro
+- =C-x e e e e e= : repeat last macro
+- C-h f kmacro-
+
+Example : =C-x ( aaa C-x C-k C-i C-x )=
+
+Using macros to rename (with C-x C-q) in dired.
+
 * org-mode
 
 - installation
 - speed commands
+  - (setq org-use-speed-commands t)
 - scheduled and deadline
   - schedule and deadline cookies
 - todo list
@@ -27,6 +138,7 @@ equal = same content (have equal component)
 - agenda files
 - custom agenda view
 - refiling
+- capture
 - org-goto (C-c C-j)
 - Babel
 - spreadsheet
@@ -38,8 +150,14 @@ equal = same content (have equal component)
 - exporting an org-mode buffer
 - adding an exporters
 - useful options
-* text expansion and templates
 
+* eq and equal
+
+eq = same object
+equal = same content (have equal component)
+
+* elisp types
+* dynamic binding
 * creating a mode
 
 - https://www.emacswiki.org/emacs/ModeTutorial
@@ -64,3 +182,4 @@ equal = same content (have equal component)
 * modeline (and headline)
 
 * writing an org-mode exporter
+* text expansion and templates
