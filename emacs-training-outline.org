@@ -1,11 +1,108 @@
 #+TITLE: GNU Emacs training
 
 * Line-up for wednesday
+  
+** Seen
 
-- emacs movement
-- org-mode movement
-- functions
+*** Emacs movements
+
+  - sexp C-M-f C-M-a C-M-k C-M-@
+  - function vs command
+  - C-h v
+  - C-h f
+  - C-h k
+  - last-command
+  - this-command
+  - mark
+  - mark-ring (global-mark-ring)
+  - selection
+  - region
+  - M-x customize-face RET region
+  - string-rectangle (C-x r t)
+  - indent-region (C-M-\)
+  - C-l (recenter)
+
+*** Org-mode movement
+
+  - M-RET / M-<up/down> / M-<left/right>
+  - C-c C-t : ajout de mots-clefs TODO
+  - S-<left/right> : switch TODO keywords
+  - C-u C-c C-c : checkboxes
+  - M-h (repeat) : select l'élément courant
+  - C-h v org-special-ctrl-a/e RET
+  - <s code block
+  - ajout "emacs-lisp"
+  - C-h org-src-fontify-natively RET
+  - C-c ^ (org-sort)
+  - M-<up/down> pour les paragraphes
+  - question des overlays (org-src-background)
+  - C-x C-e (dans org-mode ou elisp)
+
+*** Search
+
+- C-s C-w C-w
+- C-s M-e : éditer la recherche en cours
+- C-s M-p/n : browser search history
+- C-s C-M-i : complétion sur l'historique de recherche
+- C-s M-s r : toggle regexp search
+- C-s M-s c : toggle case-folding
+- C-s M-s SPC : toggle whitespace lax search
+- C-s M-s o : occur
+
+*** Dired
+
+- find-grep
+- Q to re-replace
+
+*** Org-mode caldav
+*** Regular expressions
+
+- syntax
+- use within re-search-forward
+
+*** Interactive calls
+*** Narrowing C-x n 
+
+C-x n n : narrow-to-region
+C-x n s : narrow-to-subtree
+C-x n w : widen
+
+*** Functions to narrow
+*** Functions to save match data
+
+*** Instrumenting a function
+*** 15 minutes tutorial emacs-doctor
+
+Nouveautés :
+
+- lisp-interaction-mode
+- switch-to-buffer-other-window
+  - get-buffer-create
+- erase-buffer
+- insert
+- format
+- (progn (+ 1 2) (+ 3 5))
+- (setq myliste '(1 2)) (push 0 myliste)
+- (mapcar (lambda(s) (1+ s))  '(1 2))
+- (mapconcat (lambda(s) (concat s "@")) '("a" "b" "c") "-")
+- while
+- replace-match
+- add-text-properties
+- other-window
+- car cdr
+
+*** Manipulating lists
+
+** Rest
+
+- interactive macros
+- renaming files with a macro
+- keybindings (define-key, kbd)
+- file cleanup
 - emacs history
+
+** To be seen
+
 
 |                                           | Time | Spent |
 |-------------------------------------------+------+-------|
@@ -37,7 +134,6 @@
 |-------------------------------------------+------+-------|
 | Total minutes                             |  180 |     0 |
 #+TBLFM: @24$2=vsum(@3..@-1)::@25$3=vsum(@3..@-1)
-
 * Emacs generalities
 
 ** Emacs history overview
@@ -238,8 +334,8 @@ https://www.jwz.org/doc/emacs-timeline.html
 
 ** Moving the cursor
 
-- =C-f/b= : move one character forward/backward
 - =C-a/e= : move to the beginning/end of line
+- =C-f/b= : move one character forward/backward
 - =M-a/e= : move to the beginning/end of sentence
 - =M-f/b= : move one word forward/backward
 - =C-<up/down>= : move one paragraph up/down
@@ -322,9 +418,9 @@ not "mail".
 
 Hit =C-s= and =M-c= to toggle case folding.
 
-Hit =C-s= and =M-s SPC= to toggle case folding: when matching spaces
-loosely, you can search for a string like "mail client" and still
-match the "mail client" string.
+Hit =C-s= and =M-s SPC= to toggle "match spaces loosely" : when matching
+spaces loosely, you can search for a string like "mail  client" and
+still match the "mail client" string.
 
 Try searching for "maii" instead of "mail" and then hit =DEL= to edit
 the search string by deleting the last character.
@@ -367,7 +463,6 @@ Hit =C-s C-h b= to browse the search options.
 - dabbrev-expand : =M-/=
 - pcomplete : to use when programming a mode
 - yasnippet : template expansion
-
 * Emacs Lisp 1: the basics
 
 ** 15 minutes tutorial
@@ -484,7 +579,9 @@ See [[*Manipulating lists and their elements][Manipulating lists and their eleme
 A function is the name of a sexp, possibly accepting arguments,
 returning the value of evaluating the sexp.
 
-A command is an interactive function.
+A command is an interactive function, using "(interactive)".
+
+[[file:~/test.el]]
 
 A lambda is an anonymous function.
 
@@ -612,7 +709,8 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 ‘?’ is a postfix operator, similar to ‘*’ except that it must match
     the preceding expression either once or not at all.
 
-‘*?’, ‘+?’, ‘??’ These are “non-greedy” variants of the operators ‘*’, ‘+’ and ‘?’.
+‘*?’, ‘+?’, ‘??’ These are “non-greedy” variants of the operators ‘*’,
+    ‘+’ and ‘?’.
 
 ‘[ … ]’ is a “character alternative”
 
@@ -644,6 +742,32 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
     (add-text-properties (match-beginning 0)
 			 (match-end 0)
 			 (list 'face 'bold))))
+#+END_SRC
+
+*** Examples
+
+#+BEGIN_SRC emacs-lisp
+(defun my-new-search-function ()
+  "This is my new search function."
+  (interactive)
+  (if ;; (re-search-forward "" nil t)
+      (re-search-forward "\\([a-z]\\{1,2\\}\\)\\([0-9]+\\)" nil yt)
+      (message
+       "J'ai trouvé deux groupes : \"%s\" et \"%s\""
+       (match-string 1)
+       (match-string 2))
+    (user-error "J'ai rien trouvé")))
+
+(my-new-search-function)
+
+;; (
+;; [
+;; |
+;; a1
+;; abcde1
+;; abcde3
+;; abcde
+;; abcde
 #+END_SRC
 
 *** References
@@ -679,7 +803,6 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 See =org-preserve-lc= for ,@body.
 
 ** TODO Using the debugger (1)
-
 * Emacs Lisp 2: programming a new mode
 
 ** Mode basics
@@ -704,7 +827,6 @@ See =org-preserve-lc= for ,@body.
 
 ** TODO The syntax-table
 ** TODO Customization
-
 * Emacs Lisp 3: advanced Elisp and mode programming
 
 ** TODO Lisp 1 and Lisp 2
@@ -716,7 +838,6 @@ See =org-preserve-lc= for ,@body.
 ** TODO Major hooks
 ** TODO The Emacs debugger (2)
 ** TODO The Emacs profiler
-
 * Org-mode 1: basic functions, workflows, reports
 
 ** org-mode as an outliner
@@ -746,7 +867,6 @@ See =org-preserve-lc= for ,@body.
 - agenda blocks
 
 ** TODO Exploring workflows (GTD, etc.)
-
 * Org-mode 2: Org table and Org Babel
 
 ** TODO Main spreadsheet functionalities
@@ -754,7 +874,6 @@ See =org-preserve-lc= for ,@body.
 ** TODO Embed and execute code from org-mode
 ** TODO Get the result of embedded code
 ** TODO Use Org Babel to export code et results
-
 * Miscellaneous
 
 ** TODO Writing an Org-mode exporter
@@ -772,7 +891,6 @@ See =org-preserve-lc= for ,@body.
 ** TODO seq.el
 ** TODO How to contribute to GNU Emacs?
 ** TODO Emacs configuration file organization
-
 * Exercises
 
 ** Basic (re-)searching
@@ -893,18 +1011,23 @@ See =org-preserve-lc= for ,@body.
 
 - narrow to the current region
 - widen
-- check (point-min) and (point-max)
 - narrow to the current paragraph
 - narrow to the current defun
 - narrow to the current sexp
-- write a function telling whether the buffer is narrowed
+- check (point-min) (point-max) (buffer-size)
 
 *** Functions
 
-- mark-sexps
+- mark-sexp
 - buffer-narrowed-p
+- save-restriction
+- save-window-restiction
 
 ** Saving various buffer state
+
+- write a function telling whether the buffer is narrowed
+
+- write a function that preserves the window state after widening
 
 - Find the last word of the buffer, display it for 2 second (with the
   cursor on the first character of this last word), then restore the
@@ -914,9 +1037,19 @@ See =org-preserve-lc= for ,@body.
   part of the buffer, display it (with the cursor at the beginning of
   the word), then restore the narrowed state and the cursor position.
 
-- Find the last word before the end of the current sentence.  Find the
-  next digit.  Return the position of the first character of the word
-  in the first match.
+  - beginning-of-buffer
+  - end-of-buffer
+  - bobp (synonyme de beginning of buffer-p ?)
+  - eobp (synonyme de end of buffer-p ?)
+  - (goto-char (point-min))
+  - (re-search-backward "\\`" nil t)
+
+- Find the last word before the end of the current sentence.  Return
+  the position of the first character of the word in the first match.
+
+- Find the start of a defun, match the name of the defun, narrow to
+  the defun, find the next opening parenthesis, find the next
+  argument, return the name of the function.
 
 *** Functions
 
@@ -1106,20 +1239,24 @@ Match every character in the buffer below point.
 ** Manipulating lists and their elements
 
 Make a list of five strings.
+# (setq testlist (append (make-list 5 "abc") '("def")))
 
 Return the first element of the list.
-
-Return the last element of the string.
+# (reverse testlist)
+# (last testlist)
 
 Return the number of elements of the list.
+# (length testlist)
+
+(cdr (cdr (cdr '(1 2 3 4 5))))
 
 Store the list in a variable.
 
-Replace the car of the list.
+Replace the car of the list.  (setcar)
 
-Replace the cdr of the list.
+Replace the cdr of the list.  (setcdr)
 
-Return the 4th element of the list.
+Replace the 4th element of the list.  (nthcdr)
 
 *** Hints
 
@@ -1150,9 +1287,9 @@ numerical value.
 
 *** Hints
 
-- make-list
-- random
-- (sort '(1 2 4 3) '<)
+# - make-list
+# - random
+# - (sort '(1 2 4 3) '<)
 
 ** Use a recursive function to implement "flatten"
 
@@ -1198,3 +1335,18 @@ View the list of all todo tasks with =C-c a t=.
 Insert a code block by entering =< s TAB= at the beginning of a line.
 
 Add emacs-lisp so that the code block knows we are writing Elisp code.
+* Structure fichier org
+
+** Sandbox
+
+** Functions
+
+** Variables
+
+** Questions
+* Points à revoir demain
+
+- eq / equal
+- null / nil
+- Write a function to implement custom C-a
+  - Using last-command this-command
