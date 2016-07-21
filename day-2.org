@@ -1,0 +1,65 @@
+#+TITLE: Day 2
+
+* switch control and tab
+* interactive macros
+* eq and equal
+
+eq = same object
+equal = same content (have equal component)
+
+* elisp types
+* dynamic binding
+* org-mode
+
+- installation
+- speed commands
+- scheduled and deadline
+  - schedule and deadline cookies
+- todo list
+  - checking the todo list
+- buffer restrictions (file & narrow-to-subtree)
+- setting tags (C-c C-q)
+  - tag groups
+- properties (C-c C-x p)
+- column view (C-c C-x c)
+- agenda view (C-c a) : custom keybinding
+- agenda files
+- custom agenda view
+- refiling
+- org-goto (C-c C-j)
+- Babel
+- spreadsheet
+  - sorting
+  - coordinates
+  - calc formulas
+  - elisp formulas
+  - exporting
+- exporting an org-mode buffer
+- adding an exporters
+- useful options
+* text expansion and templates
+
+* creating a mode
+
+- https://www.emacswiki.org/emacs/ModeTutorial
+- https://www.emacswiki.org/emacs/SampleMode
+
+- font-lock-keywords (font-lock-defaults)
+- comment-start and comment-start-skip
+- syntax-table
+- local map (and keybindings)
+- indent-line-function
+- easy-menu-define
+- hooks
+- defcustom
+- outline-regexp
+- buffer navigation
+- add text properties
+- manipulating overlays
+- provide and autoloading
+- profiler-start
+- tabulated display
+
+* modeline (and headline)
+
+* writing an org-mode exporter
