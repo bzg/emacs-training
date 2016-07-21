@@ -1,6 +1,7 @@
 #+TITLE: Day 2
 
 * switch control and tab
+* registers
 * interactive macros
 * eq and equal
 
