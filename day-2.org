@@ -1,5 +1,39 @@
 #+TITLE: Day 2
+#+COLUMNS: %40ITEM(Task) %10TODO(TODO) %15Team(Team) %10Effort(Effort){:} %CLOCKSUM
+#+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00
+#+PROPERTY: Team_ALL damien philippe bastien
 
+* Day 3
+
+- tag groups
+- spreadsheet
+  - sorting
+  - coordinates
+  - calc formulas
+  - elisp formulas
+  - exporting
+- Babel
+- exporting an org-mode buffer
+- adding an exporters
+- useful options
+- profiler-start
+- tabulated display
+
+* COMMENT Un projet
+** STRT Tâche 1
+   :PROPERTIES:
+   :EFFORT:   2:00
+   :TEAM:     bastien
+   :END:
+   :LOGBOOK:
+   CLOCK: [2016-07-21 jeu. 14:20]--[2016-07-21 jeu. 15:05] =>  0:45
+   :END:
+
+** LONG Tâche 2
+   :PROPERTIES:
+   :EFFORT:   0:10
+   :TEAM:     damien
+   :END:
 * Switch control and tab
 
 : !
@@ -44,6 +78,10 @@
   - C-x 8 C-h
 - delete-trailing-whitespace
 - delete-duplicate-lines
+- regexp-opt
+- regexp-quote
+- M-:
+- org-imenu-get-tree
 
 * Manipulating windows
 
@@ -80,7 +118,7 @@ Other functions for list-buffers:
  - C-x r SPC : point-to-register
  - C-x r j : jump-to
  - C-x r w : window-configuration-to-register
- - M-x register-list (package)
+ - M-x register-list (package extern)
  - M-x list-registers RET
 
 ** Bookmarks
@@ -126,30 +164,43 @@ Using macros to rename (with C-x C-q) in dired.
 - speed commands
   - (setq org-use-speed-commands t)
 - scheduled and deadline
-  - schedule and deadline cookies
-- todo list
-  - checking the todo list
+  - schedule C-c C-s
+  - deadline C-c C-d
+- org-agenda-files
+- C-c [
+- S-<left/right> S-<up/down> dans les timestamps
+- dans l'agenda S-<left/right> pour changer la date
+- dans l'agenda use `t' to mark done
+- (setq org-agenda-skip-deadline-if-done t)
+- (setq org-agenda-skip-scheduled-if-done t)
+- checking the todo list
 - buffer restrictions (file & narrow-to-subtree)
+- agenda narrowing (by tag, by regexp, / / = |)
+- tag match
+- todo/properties/scheduled match
+- . dans agenda
+- v d / v w / v m
 - setting tags (C-c C-q)
-  - tag groups
 - properties (C-c C-x p)
 - column view (C-c C-x c)
 - agenda view (C-c a) : custom keybinding
 - agenda files
 - custom agenda view
-- refiling
-- capture
+- capture (C-c c)
+- refiling (C-c C-w)
 - org-goto (C-c C-j)
-- Babel
-- spreadsheet
-  - sorting
-  - coordinates
-  - calc formulas
-  - elisp formulas
-  - exporting
-- exporting an org-mode buffer
-- adding an exporters
-- useful options
+- demote avec S-M-<left/right> qui garde la structure
+- C-c C-x C-r pour insérer un tableau avec les durées
+- C-c C-x e pour insérer une propriété "Effort"
+- #+COLUMNS: %40ITEM(Task) %10Effort(Effort){:} %CLOCKSUM
+- Effort_all
+
+* string-match
+
+#+BEGIN_SRC emacs-lisp
+(if (string-match "\\<abc\\>" " abc ")
+    (match-string 0))
+#+END_SRC
 
 * eq and equal
 
@@ -160,26 +211,26 @@ equal = same content (have equal component)
 * dynamic binding
 * creating a mode
 
-- https://www.emacswiki.org/emacs/ModeTutorial
 - https://www.emacswiki.org/emacs/SampleMode
+- https://www.emacswiki.org/emacs/ModeTutorial
 
-- font-lock-keywords (font-lock-defaults)
+- require, provide, (featurep 'sns)
+- defvar
+- font-lock-add-keywords (font-lock-defaults)
 - comment-start and comment-start-skip
+- paragraph-start and paragraph-separate
 - syntax-table
 - local map (and keybindings)
-- indent-line-function
-- easy-menu-define
-- hooks
-- defcustom
+- [indent-line-function]
+- [easy-menu-define]
+- [hooks] sns-mode-hook
 - outline-regexp
-- buffer navigation
-- add text properties
+- defcustom
+- autoloads
+- [buffer navigation functions]
 - manipulating overlays
-- provide and autoloading
-- profiler-start
-- tabulated display
+- [text properties]
 
 * modeline (and headline)
-
 * writing an org-mode exporter
 * text expansion and templates
