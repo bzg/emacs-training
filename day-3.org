@@ -1,0 +1,52 @@
+* sns mode
+
+- font-lock-defaults ([[info:elisp#Font%20Lock%20Basics][voir manuel]])
+- auto-fill
+- auto-indent (indent-line-function)
+- ad-advice
+- defgroup
+- defcustom
+- defface
+
+* hooks
+
+- add-hook (add-hook 'lisp-interaction-mode-hook 'auto-fill-mode)
+- remove-hook
+- run-hook
+- delay-mode-hooks
+- before-save-hook
+- before-init-hook
+
+(defcustom org-mode-hook nil
+  "Mode hook for Org-mode, run after the mode was turned on."
+  :group 'org
+  :type 'hook)
+
+;;;###autoload
+(defun org-clock-persistence-insinuate ()
+  "Set up hooks for clock persistence."
+  (require 'org-clock)
+  (add-hook 'org-mode-hook 'org-clock-load)
+  (add-hook 'kill-emacs-hook 'org-clock-save))
+
+* org-mode
+
+- export
+- table
+- babel
+
+* code
+
+- flatten
+- read-from-minibuffer
+- read-from-string
+- read-char
+
+* divers
+
+- comment init files
+- magit
+- flycheck
+- completion
+
+* hooks
