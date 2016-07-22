@@ -1,5 +1,102 @@
-* sns mode
+* Last but not least
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-07-22 ven. 14:16
+  :ARCHIVE_FILE: ~/emacs-training/day-3.org
+  :ARCHIVE_CATEGORY: day-3
+  :END:
 
+- [X] Philippe : idle timer
+  - timer-list
+  - timer-idle-list
+- [X] Philippe : cloner/compiler Emacs : git clone git://git.savannah.gnu.org/emacs.git
+- [X] org-cycle dans .el files (mon init)
+- [X] pourquoi if / when 
+- [X] call-process
+- [X] finish sns-mode
+  - defcustom
+  - defface
+  - hook
+    - before-save-hook
+- [X] org-mode table
+  - org-table-create
+  - org-table-import (csv, tsv)
+  - TAB et S-TAB
+  - S-RET
+  - C-c .
+  - S-M-left : supprimer la colonne
+  - S-M-right : crée une nouvelle colonne
+  - C-c { : active table formulas debugger
+  - S-M-up : supprimer la ligne
+  - S-M-down : crée une nouvelle ligne
+  - [[info:org#The%20spreadsheet][info:org#The spreadsheet]]
+  - C-c = : column formula
+  - C-u C-c = : field formula
+  - references
+  - formulas debugger
+  - remote ref
+  - babel
+    - #+name
+    - #+headers
+- [ ] org-mode babel
+- [ ] init files
+- [ ] Magit
+- [ ] tabulated-list-mode
+- [ ] profile-start
+- [ ] thing-at-point
+- [ ] ert
+- [ ] assert
+- [ ] checkdoc
+
+* org-cycle dans .el
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'turn-on-orgstruct)
+
+(global-set-key
+ (kbd "C-M-]") (lambda () (interactive) (org-cycle t)))
+
+(global-set-key
+ (kbd "M-]") (lambda () (interactive)
+	       (ignore-errors (end-of-defun) (beginning-of-defun)) (org-cycle)))
+#+END_SRC
+
+* Emacs utilities
+
+- C-o : open-line
+- macro
+- M-| : shell-command-on-region
+- (region-beginning)
+- (region-end)
+- macros
+- funcall
+- apply
+- (read-from-minibuffer "Prompt: ")
+- (read-regexp "Votre regexp: ")
+- regexp-quote
+- (regexp-opt '("abc" "bcd"))
+- read-char
+- bolp (beginning of line ?)
+- eolp (end of line ?)
+
+* Process
+
+#+BEGIN_SRC emacs-lisp
+(call-process-shell-command "echo \"/^abc$/\" | pcretest")
+
+(call-process "pcretest.sh" nil t nil "^abc")
+#+END_SRC
+
+* org-mode
+
+- export
+- table
+- babel
+
+* sns-mode
+
+- sns-return
+  - looking-at
+  - looking-back
 - font-lock-defaults ([[info:elisp#Font%20Lock%20Basics][voir manuel]])
 - auto-fill
 - auto-indent (indent-line-function)
@@ -29,14 +126,8 @@
   (add-hook 'org-mode-hook 'org-clock-load)
   (add-hook 'kill-emacs-hook 'org-clock-save))
 
-* org-mode
-
-- export
-- table
-- babel
-
 * code
-
+  
 - flatten
 - read-from-minibuffer
 - read-from-string

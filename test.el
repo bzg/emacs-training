@@ -67,5 +67,60 @@
 ;; C-u C-M-x : edebug-defun
 ;; (my-raw-prefix-test)
 
+(defun sns-return ()
+  ""
+  (let ((number (save-excursion
+		  (beginning-of-line)
+		  (when (looking-at "^\\([0-9]\\)")
+		    (match-string 1)))))
+    (if number
+	(progn
+	  (end-of-line)
+	  (insert "\n" (sns-inc-string number) "=\"\"")
+	  (backward-char))
+      (end-of-line)
+      (insert "\n"))))
+
+(defun sns-inc-string (str)
+  "Increment the first number found in a string."
+  (if (string-match "^\\(.*\\)\\([0-9]+\\)\\(.*$\\)" str)
+      (format "%s%s%s"
+	      (match-string 1 str)
+	      (1+ (string-to-number (match-string 2 str))) ;; integer
+	      (match-string 3 str))
+    str))
+
+(sns-inc-string "1")
+
+(sns-inc-string "abc1def")
+
+(defun buffer-with-my-region (beg end)
+  ""
+  (interactive "r")
+  (let ((bf (buffer-substring beg end)))
+    (switch-to-buffer-other-window (get-buffer-create "*je travaille*"))
+    (erase-buffer)
+    (insert bf)))
+
+(defun buffer-with-my-region-2 (beg end)
+  ""
+  (interactive "r")
+  (let ((bf (buffer-substring beg end)))
+    (when (with-temp-buffer
+	    (insert bf)
+	    (goto-char (point-min))
+	    (re-search-forward "insert" nil t))
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (when (re-search-forward "insert" nil t)
+	(replace-match "INSERT"))
+      (widen))))
+
+  
+
+
+  
+  
+  
 
 

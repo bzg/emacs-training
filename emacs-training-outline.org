@@ -785,9 +785,7 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 #+BEGIN_SRC emacs-lisp
 (setq x 3)
 
-;; (inc x) <=> (setq x (1+ x))
-(defmacro inc (var)
-   (list 'setq var (list '1+ var)))
+(setq x 3 y 4)
 
 (inc x)
 ;; => 4
@@ -795,11 +793,27 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 (macroexpand '(inc x))
 ;; => (setq x (1+ x))
 
+;; (inc x) <=> (setq x (1+ x))
+(defmacro inc (var)
+   (list 'setq var (list '1+ var)))
+
 ;; (inc2 x) <=> (inc x)
 (defmacro inc2 (var)
    `(setq ,var (1+ ,var)))
 
+;; (inc2 x) <=> (inc x)
+(defmacro let-a-3 (&rest body)
+   `(let ((msg "hello"))
+      ,@body))
+
+(let-a-3 ;; msg est toujours défini
+ (message "blabla")
+ (sit-for 2)
+ (message msg))
+      
 (inc2 x)
+
+(macroexpand '(inc2 x))
 ;; => 5
 #+END_SRC
 
@@ -1070,10 +1084,6 @@ See =org-preserve-lc= for ,@body.
 - list buffers
 - mark several buffers for saving
 - perform the saving
-
-*** Fonctions
-
-- list-buffers
 
 ** Programmatic buffers manipulations
 

@@ -1,0 +1,59 @@
+#+TITLE: test
+#+OPTIONS: author:bzg email:bzg@bzg.fr
+
+* Tableau 1
+
+| Aurélie | Géraldine | Mean      |
+|---------+-----------+-----------|
+|      16 |        15 | 16 15     |
+|---------+-----------+-----------|
+|     293 |        38 | 293 38    |
+|    allo |      bobo | allo bobo |
+#+TBLFM: $3='(format "%s %s" "$1" "$2");L
+
+* Tableau 2
+
+#+NAME: montableau
+|  Task 1 |   Task 2 |    Total |
+|---------+----------+----------|
+|    2:12 |     1:49 | 04:01:00 |
+| 3:02:20 | -2:07:00 |     0.92 |
+
+#+TBLFM: @2$3=$1+$2;T::@3$3=$1+$2;t
+
+* babel
+
+  I type some prose here.
+
+  #+begin_src python :tangle my_python_file.py
+  #!/usr/bin/env python
+
+  print "This is my python file."
+  #+end_src
+
+  #+begin_src python :tangle my_python_file.py
+  print "Another string."
+  #+end_src
+
+  #+HEADER: 
+  #+NAME: mon test elisp
+  #+BEGIN_SRC emacs-lisp :tangle test2.el
+  (progn
+    (+ 2 10)
+    (message "wat?!"))
+  #+END_SRC
+
+  #+RESULTS:
+  : wat?!
+
+  #+HEADERS: :var data1=1
+  #+BEGIN_SRC emacs-lisp :var data2=2 :tangle test2.el
+  (message "data1:%S, data2:%S" data1 data2)
+  #+END_SRC
+
+  #+RESULTS:
+  : data1:1, data2:2
+
+
+
+
