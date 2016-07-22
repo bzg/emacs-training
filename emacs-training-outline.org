@@ -1,6 +1,6 @@
 #+TITLE: GNU Emacs training
 
-* Line-up for wednesday
+* Line-up for day 1
   
 ** Seen
 
@@ -93,16 +93,7 @@ Nouveautés :
 
 *** Manipulating lists
 
-** Rest
-
-- interactive macros
-- renaming files with a macro
-- keybindings (define-key, kbd)
-- file cleanup
-- emacs history
-
 ** To be seen
-
 
 |                                           | Time | Spent |
 |-------------------------------------------+------+-------|
@@ -1353,18 +1344,3 @@ View the list of all todo tasks with =C-c a t=.
 Insert a code block by entering =< s TAB= at the beginning of a line.
 
 Add emacs-lisp so that the code block knows we are writing Elisp code.
-* Structure fichier org
-
-** Sandbox
-
-** Functions
-
-** Variables
-
-** Questions
-* Points à revoir demain
-
-- eq / equal
-- null / nil
-- Write a function to implement custom C-a
-  - Using last-command this-command

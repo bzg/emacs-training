@@ -1,7 +1,7 @@
-#+TITLE: test
+#+TITLE: Examples: tables and babel
 #+OPTIONS: author:bzg email:bzg@bzg.fr
 
-* Tableau 1
+* Table 1
 
 | Aurélie | Géraldine | Mean      |
 |---------+-----------+-----------|
@@ -11,9 +11,9 @@
 |    allo |      bobo | allo bobo |
 #+TBLFM: $3='(format "%s %s" "$1" "$2");L
 
-* Tableau 2
+* Table 2
 
-#+NAME: montableau
+#+NAME: mytable
 |  Task 1 |   Task 2 |    Total |
 |---------+----------+----------|
 |    2:12 |     1:49 | 04:01:00 |
@@ -21,39 +21,44 @@
 
 #+TBLFM: @2$3=$1+$2;T::@3$3=$1+$2;t
 
-* babel
+* Babel
 
-  I type some prose here.
+I type some prose here.
 
-  #+begin_src python :tangle my_python_file.py
-  #!/usr/bin/env python
+#+begin_src python :tangle my_python_file.py
+#!/usr/bin/env python
 
-  print "This is my python file."
-  #+end_src
+print "This is my python file."
+#+end_src
 
-  #+begin_src python :tangle my_python_file.py
-  print "Another string."
-  #+end_src
+#+begin_src python :tangle my_python_file.py
+print "Another string."
+#+end_src
 
-  #+HEADER: 
-  #+NAME: mon test elisp
-  #+BEGIN_SRC emacs-lisp :tangle test2.el
+#+HEADER: 
+#+NAME: mon test elisp
+#+BEGIN_SRC emacs-lisp :tangle test2.el
   (progn
     (+ 2 10)
     (message "wat?!"))
   #+END_SRC
 
-  #+RESULTS:
-  : wat?!
+#+RESULTS:
+: wat?!
 
-  #+HEADERS: :var data1=1
-  #+BEGIN_SRC emacs-lisp :var data2=2 :tangle test2.el
-  (message "data1:%S, data2:%S" data1 data2)
-  #+END_SRC
+#+HEADERS: :var data1=1
+#+BEGIN_SRC emacs-lisp :var data2=2 :tangle test2.el
+(message "data1:%S, data2:%S" data1 data2)
+#+END_SRC
 
-  #+RESULTS:
-  : data1:1, data2:2
+#+RESULTS:
+: data1:1, data2:2
 
+* Example dynamic block
 
-
-
+#+BEGIN: clocktable :maxlevel 2 :scope file
+#+CAPTION: Clock summary at [2016-07-22 ven. 16:03]
+| Headline   | Time |
+|------------+------|
+| *Total time* | *0:00* |
+#+END:

@@ -1,39 +1,8 @@
-#+TITLE: Day 2
+#+TITLE: Emacs training day 2
 #+COLUMNS: %40ITEM(Task) %10TODO(TODO) %15Team(Team) %10Effort(Effort){:} %CLOCKSUM
 #+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00
 #+PROPERTY: Team_ALL damien philippe bastien
 
-* Day 3
-
-- tag groups
-- spreadsheet
-  - sorting
-  - coordinates
-  - calc formulas
-  - elisp formulas
-  - exporting
-- Babel
-- exporting an org-mode buffer
-- adding an exporters
-- useful options
-- profiler-start
-- tabulated display
-
-* COMMENT Un projet
-** STRT Tâche 1
-   :PROPERTIES:
-   :EFFORT:   2:00
-   :TEAM:     bastien
-   :END:
-   :LOGBOOK:
-   CLOCK: [2016-07-21 jeu. 14:20]--[2016-07-21 jeu. 15:05] =>  0:45
-   :END:
-
-** LONG Tâche 2
-   :PROPERTIES:
-   :EFFORT:   0:10
-   :TEAM:     damien
-   :END:
 * Switch control and tab
 
 : !
@@ -45,7 +14,6 @@
 : keysym Caps_Lock = Control_L
 : add Lock = Caps_Lock
 : add Control = Control_L
-
 * Emacs general useful keybindings
 
 - C-x i : insert-file
@@ -158,7 +126,7 @@ Example : =C-x ( aaa C-x C-k C-i C-x )=
 
 Using macros to rename (with C-x C-q) in dired.
 
-* org-mode
+* Exploring org-mode
 
 - installation
 - speed commands
@@ -195,21 +163,24 @@ Using macros to rename (with C-x C-q) in dired.
 - #+COLUMNS: %40ITEM(Task) %10Effort(Effort){:} %CLOCKSUM
 - Effort_all
 
-* string-match
+* Using string-match
 
+# Careful about using match-string with TWO args after string-match
 #+BEGIN_SRC emacs-lisp
 (if (string-match "\\<abc\\>" " abc ")
-    (match-string 0))
+    (match-string 0 " abc "))
 #+END_SRC
 
-* eq and equal
+* Eq and equal
 
 eq = same object
 equal = same content (have equal component)
 
-* elisp types
-* dynamic binding
-* creating a mode
+* Dynamic binding
+
+(Quick definition).
+
+* Creating a mode
 
 - https://www.emacswiki.org/emacs/SampleMode
 - https://www.emacswiki.org/emacs/ModeTutorial
@@ -231,6 +202,18 @@ equal = same content (have equal component)
 - manipulating overlays
 - [text properties]
 
-* modeline (and headline)
-* writing an org-mode exporter
-* text expansion and templates
+* Example for Org-column
+** STRT Task 1
+   :PROPERTIES:
+   :EFFORT:   2:00
+   :TEAM:     bastien
+   :END:
+   :LOGBOOK:
+   CLOCK: [2016-07-21 jeu. 14:20]--[2016-07-21 jeu. 15:05] =>  0:45
+   :END:
+
+** LONG Task 2
+   :PROPERTIES:
+   :EFFORT:   0:10
+   :TEAM:     damien
+   :END:
