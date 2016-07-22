@@ -1298,11 +1298,14 @@ numerical value.
 
 ** Use a recursive function to implement "flatten"
 
+(append '(1) '(2) '(3) '(4))
+
 #+BEGIN_SRC emacs-lisp
 (defun flatten (x)
   (cond ((null x) nil)
-	((listp x) (append (flatten (car x)) (flatten (cdr x))))
-	(t (list x))))
+        ((listp x)
+         (append (flatten (car x)) (flatten (cdr x))))
+        (t (list x))))
 
 (flatten '((1 2) ((3 4))))
 #+END_SRC
