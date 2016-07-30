@@ -1,0 +1,438 @@
+#+title: Emacs exercises
+
+* Use the mark
+
+1. find a file
+2. set the mark at some point
+3. move around and see the activated region
+4. set the mark in another place
+5. copy (aka "kill") the region
+6. set the mark
+7. deactivate the transient region immediately
+8. go the last mark position
+9. set the mark
+10. store the position in a register
+11. find another file
+12. go back to the stored position
+
+* A macro with a counter (in dired)
+
+- C-x d [go to a directory with fake files] RET
+- C-x C-q to toggle off read-only mode in dired
+- create a macro to rename multiple files using a counter (file1.txt,
+  file2.txt, etc.)
+
+* File cleanup
+
+- open an Emacs Lisp file
+- go to the beginning of the buffer
+- clean up trailing whitespaces
+- clean up duplicate lines
+- downcase a region
+- find camelcase words
+- create a macro to downcase all camel words
+- convert 2+ blank lines to one blank line
+
+* Basic (re-)searching
+
+1. open a buffer
+2. insert some text
+3. go back to the beginning of the buffer
+4. go back to the beginning of the buffer using =M-x=
+5. search for part of the text using incremental search
+6. search for part of the text using a regular expression
+7. switch from search to i-search
+8. re-search for another part of the string
+9. go back to the beginning of the buffer
+10. re-search again for the previous search
+11. re-search again and edit the search string
+
+* Selecting and moving paragraphs in org files
+
+- open an =.org= file
+- add a paragraph
+- select the paragraph (=M-h=)
+- yank the paragraph several times
+- go a the beginning of a paragraph
+- move it down several time
+- try to do the same with list items
+- try to do the same with subtrees
+- try =C-c @= to select the current subtree
+- perform a replacement =M-%= in the selected subtree
+
+* Org table manipulations
+
+- create a table (=org-table-create=)
+- select the table
+- unselect the table
+- move from cell to cell with TAB
+- M-<up/down> to move lines
+- M-<lef/right> to move columns
+- =org-table-transpose-table-at-point=
+- =C-c }= to toggle coordinates
+- insert a new column
+- insert a new row
+
+* Org spreadsheets formulas
+
+- create a table (=org-table-create=)
+- add some names in the first row
+- add some disciplines in the first column
+- add numbers in the lines below (e.g. marks for exams)
+- compute the mean by discipline (=C-c ==)
+- compute the mean by student (=C-u C-c ==)
+- increment a value in the line below
+- create a new column at the end
+- compute the mean using an Elisp function
+- create a new column at the end
+- insert the value of the first column using an Elisp function
+
+* Org list manipulation
+
+- make a list
+- use M-RET to create a new item
+- M-<up/down> to move items up/down
+- M-<lef/right> to promote/demote items
+- go in the middle of the last item
+- create a new item by splitting the current one
+- turn the current item into a checkbox item
+- tick the current item checkbox
+- turn the list level to a checkbox list
+- tick all checkboxes
+- convert one item into a headline
+- select all the list
+- convert all list items into headlines
+- sort the list alphabetically
+
+* Add keybindings
+
+- add a fundamental-mode keybinding
+- add a global keybinding
+- unbind a key globally
+
+* Global mode setting and local variables
+
+- open a .txt file
+- use a custom value for fill-column each time you open the file
+
+* Narrowing and checking point
+
+- narrow to the current region
+- widen
+- narrow to the current paragraph
+- narrow to the current defun
+- narrow to the current sexp
+- check (point-min) (point-max) (buffer-size)
+
+** Functions to check
+
+- mark-sexp
+- buffer-narrowed-p
+- save-restriction
+- save-window-restiction (use with care)
+
+* Saving various buffer state
+
+- Write a function telling whether the buffer is narrowed.
+
+- Write a function that preserves the window state after widening.
+
+- Find the last word of the buffer, display it for 2 seconds (with the
+  cursor on the first character of this last word), then restore the
+  initial cursor position.
+
+- When in a narrowed state, display the first word in the invisible
+  part of the buffer, display it (with the cursor at the beginning of
+  the word), then restore the narrowed state and the cursor position.
+
+  You can check these functions:
+
+  - beginning-of-buffer
+  - end-of-buffer
+  - bobp (aka "is it the beginning of the buffer?")
+  - eobp (aka "is it the end of the buffer?")
+  - (goto-char (point-min))
+  - (re-search-backward "\\`" nil t)
+
+- Find the last word before the end of the current sentence.  Return
+  the position of the first character of the word in the first match.
+
+- Find the start of a defun, match the name of the defun, narrow to
+  the defun, find the next opening parenthesis, find the next
+  argument, return the name of the function.
+
+** Functions to check
+
+- save-excursion
+- save-restriction
+- save-match-data
+- save-window-excursion
+- match-beginning
+- match-end
+- match-string
+
+* Interactive buffer manipulations
+
+- list buffers
+- mark several buffers for saving
+- perform the saving in those buffers
+
+* Programmatic buffers manipulations
+
+- write a function that insert the names of all live buffers
+- write a function that insert those names in alphabetic order
+- write a function that insert those names by buffer-size
+- write a function that displays something in a temporary buffer
+- write a function that creates a new buffer and switches to it,
+  possibly in a new window
+- write a function that display a new buffer in a new window while
+  asking directly for something in the minibuffer (the info buffer
+  should disappear after the user entered a string)
+
+** Functions to check
+
+- sort
+- buffer-list
+- buffer-size
+- buffer-string
+- buffer-substring
+- get-buffer-create
+- switch-to-buffer-other-window
+- with-buffer-modified-unmodified
+- with-current-buffer
+- with-current-buffer-window
+- with-output-to-string
+- with-output-to-temp-buffer
+- with-temp-buffer
+- with-temp-buffer-window
+
+* Navigating in Elisp code
+
+- C-M-a: beginning-of-defun
+- C-M-e: end-of-defun
+- C-M-x: eval-defun
+- C-u C-M-x: eval-defun and edebug it
+- C-M-f: forward-sexp
+- C-M-b: backward-sexp
+- C-M-u: forward-sexp
+- C-M-d: down-list
+- C-M-k: kill-sexp
+- C-M-p: backward-list
+- C-M-n: forward-list
+
+* Handling errors in code
+
+- Write a function which reads a string and return an error when the
+  string contain a certain character.
+
+- Write a function that reads two numbers p and q and return a result
+  when it makes sense, or an error with a custom message when q=0.
+
+- Write a function that reads two numbers p and q and return the
+  result when it makes sense, and ask for another digit when the
+  second is 0.
+
+** Functions to check
+
+- condition-case
+- unwind-protect
+- ignore-errors
+- user-error
+- error
+
+* Defining variables and options
+
+1. Define a variable.
+2. Get the value of the variable.
+3. Add a docstring to the variable.
+4. Convert the variable into an option.
+5. Customizing the value of the option using customize-variable.
+6. Add a custom group.
+7. Put the new option in this group.
+8. Visit the group and set the value of the variable from here.
+9. Define a function.
+10. Add a docstring to the function.
+11. Run M-x checkdoc RET to check the syntax of the docstring.
+12. Set a buffer-local variable.
+13. Change the value of the variable in the buffer.
+14. Check the value of the variable in two different buffers.
+
+* Manipulating strings
+
+Make a list of 20 (possibly identical) characters.
+
+Create a new string by concatenating the list of characters.
+
+Return a string of the first 5 characters from this string.
+
+Store the buffer string in a variable.
+
+Replace tabs by spaces in this string.
+
+Return the number of lines in this string.
+
+* Using interactive
+
+Create a function that asks for a name and returns "Hello [name]!" in
+the minibuffer and pause for two seconds.
+
+Call the function.
+
+Make the function interactive and call the command.
+
+Add an optional raw prefix argument to the function and display the
+value of the prefix argument in the message.
+
+Use =current-prefix-arg= to display the value of the prefix argument.
+
+Use (interactive "s...") to ask for a name and display it.
+
+Use (interactive "B...") to ask for a buffer and display it.
+
+** Examples
+
+#+BEGIN_SRC emacs-lisp
+(defun my-hello (&optional arg)
+  "Display your name."
+  (interactive "P")
+  (let ((name (read-from-minibuffer "What's your name? ")))
+    (message "Hello %s! [arg is %s]" name arg)
+    (sit-for 1)
+    (message "The prefix argument value is %s" current-prefix-arg)
+    ;; (beep)
+    ))
+
+(defun my-hello2 (name)
+  (interactive "sWhat's your name? ")
+  (message "Hello %s!" name))
+
+(defun my-visit-buffer (buf)
+  (interactive "BWhat buffer? ")
+  (switch-to-buffer-other-window buf))
+#+END_SRC
+* Building regular expressions
+
+- Match every letter from a-e.
+- Match every letter from a-e and A-E.
+- Match exactly one digit followed by at least two letters.
+- Match a number from 3 to 6 digits followed by a dot.
+- Match an opening parenthesis.
+- Match the content of a pair of square brackets and return it.
+- Match every character in the buffer below point.
+
+* Manipulating lists and their elements
+
+Make a list of five strings.
+
+#+BEGIN_SRC emacs-lisp
+(setq testlist (append (make-list 5 "abc") '("def")))
+#+END_SRC
+
+Return the first element of the list.
+
+#+BEGIN_SRC emacs-lisp
+(reverse testlist)
+(last testlist)
+#+END_SRC
+
+Return the number of elements of the list.
+
+#+BEGIN_SRC emacs-lisp
+(length testlist)
+(cdr (cdr (cdr '(1 2 3 4 5))))
+#+END_SRC
+
+Store the list in a variable.
+
+Replace the car of the list using =setcar=.
+
+Replace the cdr of the list using =setcdr=.
+
+Replace the 4th element of the list using =nthcdr=.
+
+** Hints
+
+#+BEGIN_SRC emacs-lisp
+(setq my-list '("a" "b" "c" "d" "e"))
+(setcar my-list "x")
+(setcdr my-list "y")
+(setcar (nthcdr 3 my-list) "x")
+(eval 'my-list)
+#+END_SRC
+
+* Mapping over a list
+
+Make a list of strings.
+
+Add a new string at the beginning of the list.
+
+Add a new string at the end of the list.
+
+Concatenate all strings in this list.
+
+For each string in this list, append "_" and return the new list.
+
+Make a list of random numbers.
+
+Sort the list by numerical order.
+
+Write a function that create a random list of numbers sorted by
+numerical value.
+
+** Hints
+
+- make-list
+- random
+- (sort '(1 2 4 3) '<)
+
+* Use a recursive function to implement "flatten"
+
+#+BEGIN_SRC emacs-lisp
+;; Test (append '(1) '(2) '(3) '(4))
+
+(defun flatten (x)
+  (cond ((null x) nil)
+        ((listp x)
+         (append (flatten (car x)) (flatten (cdr x))))
+        (t (list x))))
+
+(flatten '((1 2) ((3 4)) 5))
+#+END_SRC
+
+* Org-mode quick start
+
+Create an .org file.
+
+Insert a new heading with =M-RET=.
+
+Make it a TODO item with =C-c C-t=.
+
+Switch the todo state from TODO to DONE with =S-<right>=.
+
+Use =C-c C-q= to add a tag.
+
+Write a paragraph and a one-line todo (as a paragraph).
+
+Convert the current line to a list with C-c -.
+
+Convert the current line to a heading with C-c *.
+
+Convert back to a list item with C-c -.
+
+Convert the current list item to a checkbox with C-u C-c C-c.
+
+Move the list up with =M-<up>=.
+
+Sort the list alphabetically with =C-c ^ a=.
+
+Create a new todo.
+
+Set it to be done today with =C-c C-s RET=.
+
+View the agenda for the week with =C-c a a=.
+
+View the list of all todo tasks with =C-c a t=.
+
+Insert a code block by entering =< s TAB= at the beginning of a line.
+
+Add emacs-lisp so that the code block knows we are writing Elisp code.

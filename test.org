@@ -1,24 +1,37 @@
 #+TITLE: Examples: tables and babel
 #+OPTIONS: author:bzg email:bzg@bzg.fr
 
-* Table 1
+* Tables
+
+A table with simple column formulas.
+
+| Aurélie | Géraldine | Sum       |            Mean |
+|---------+-----------+-----------+-----------------|
+|      16 |        15 |        31 |            15.5 |
+|---------+-----------+-----------+-----------------|
+|      19 |         8 |        27 |            13.5 |
+|     one |       two | one + two | (one + two) / 2 |
+#+TBLFM: $3=$1+$2::$4=vmean($1..$2)
+
+A table with an Emacs Lisp formulas.
 
 | Aurélie | Géraldine | Mean      |
 |---------+-----------+-----------|
 |      16 |        15 | 16 15     |
 |---------+-----------+-----------|
 |     293 |        38 | 293 38    |
-|    allo |      bobo | allo bobo |
+|   alice |       bob | alice bob |
 #+TBLFM: $3='(format "%s %s" "$1" "$2");L
 
-* Table 2
+(Note that $1 and $2 must be quoted to be read as strings.)
 
-#+NAME: mytable
+A table manipulating time values.
+
+#+NAME: mytable2
 |  Task 1 |   Task 2 |    Total |
 |---------+----------+----------|
 |    2:12 |     1:49 | 04:01:00 |
 | 3:02:20 | -2:07:00 |     0.92 |
-
 #+TBLFM: @2$3=$1+$2;T::@3$3=$1+$2;t
 
 * Babel
@@ -35,16 +48,20 @@ print "This is my python file."
 print "Another string."
 #+end_src
 
-#+HEADER: 
-#+NAME: mon test elisp
-#+BEGIN_SRC emacs-lisp :tangle test2.el
-  (progn
-    (+ 2 10)
-    (message "wat?!"))
-  #+END_SRC
+Try C-c C-c on the next block:
 
-#+RESULTS:
+#+HEADER: 
+#+NAME: elisp test
+#+BEGIN_SRC emacs-lisp :tangle test2.el
+(progn
+  (+ 2 10)
+  (message "wat?!"))
+#+END_SRC
+
+#+RESULTS: elisp test
 : wat?!
+
+Try C-c C-c on the next block:
 
 #+HEADERS: :var data1=1
 #+BEGIN_SRC emacs-lisp :var data2=2 :tangle test2.el
@@ -56,8 +73,12 @@ print "Another string."
 
 * Example dynamic block
 
+Try clocking in on a headline with C-c C-x C-i.
+
+Then update the dynamic block below with C-c C-c :
+
 #+BEGIN: clocktable :maxlevel 2 :scope file
-#+CAPTION: Clock summary at [2016-07-22 ven. 16:03]
+#+CAPTION: Clock summary at [2016-07-30 sam. 18:04]
 | Headline   | Time |
 |------------+------|
 | *Total time* | *0:00* |

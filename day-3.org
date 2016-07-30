@@ -10,23 +10,25 @@
 - macros
 - funcall
 - apply
-- (completing-read "Prompt: " '("philippe" "damien" "bastien"))
+- (completing-read "Prompt: " '("alice" "bob" "eva"))
 - (read-from-minibuffer "Prompt: ")
 - (read-regexp "Votre regexp: ")
 - regexp-quote
 - (regexp-opt '("abc" "bcd"))
 - read-char
-- bolp (beginning of line ?)
-- eolp (end of line ?)
+- bolp (beginning of line?)
+- eolp (end of line?)
+
 * Using timers
+
+Variables:
 
 - timer-list
 - timer-idle-list
 
 * Cloning and compiling emacs
   
-- cloning/compiling Emacs : git clone
-  git://git.savannah.gnu.org/emacs.git
+: ~$ git clone git://git.savannah.gnu.org/emacs.git
 
 * org-mode table and spreadsheets
 
@@ -56,6 +58,10 @@ See [[file:test.org::*Table%201][Table 1]] and [[file:test.org::*Table%202][Tabl
 [[shell:du -h]]
 
 [[elisp:(message "yo")]]
+
+Check org-confirm-elisp-link-function and
+org-confirm-shell-link-function.
+
 * Org-mode babel
 
 See [[file:test.org::*Babel][Babel]].
@@ -96,7 +102,7 @@ See [[file:test.org::*Babel][Babel]].
 ;; => 5
 #+END_SRC
 
-See =org-preserve-lc= for ,@body.
+See =org-preserve-lc= for a use of ,@body.
 
 * Using the mode-line
 
@@ -138,7 +144,7 @@ See =org-preserve-lc= for ,@body.
 - checkdoc
 
 * Use org-cycle in emacs-lisp-mode
-
+  
 #+BEGIN_SRC emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-orgstruct)
 
@@ -162,7 +168,7 @@ See =org-preserve-lc= for ,@body.
 ;; M-| : shell-command-on-region
 #+END_SRC
 
-* Continue sns-mode (auto-fill, indent-line...)
+* Continue sns-mode (auto-fill, indent-line, etc.)
 
 - Write sns-return to do the right thing
   - looking-at
@@ -201,4 +207,6 @@ See =org-preserve-lc= for ,@body.
 #+END_SRC
 
 * Magit demo
+
+
 

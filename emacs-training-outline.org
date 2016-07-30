@@ -1,130 +1,5 @@
-#+TITLE: GNU Emacs training
+#+TITLE: GNU Emacs training line-up
 
-* Line-up for day 1
-  
-** Seen
-
-*** Emacs movements
-
-  - sexp C-M-f C-M-a C-M-k C-M-@
-  - function vs command
-  - C-h v
-  - C-h f
-  - C-h k
-  - last-command
-  - this-command
-  - mark
-  - mark-ring (global-mark-ring)
-  - selection
-  - region
-  - M-x customize-face RET region
-  - string-rectangle (C-x r t)
-  - indent-region (C-M-\)
-  - C-l (recenter)
-
-*** Org-mode movement
-
-  - M-RET / M-<up/down> / M-<left/right>
-  - C-c C-t : ajout de mots-clefs TODO
-  - S-<left/right> : switch TODO keywords
-  - C-u C-c C-c : checkboxes
-  - M-h (repeat) : select l'élément courant
-  - C-h v org-special-ctrl-a/e RET
-  - <s code block
-  - ajout "emacs-lisp"
-  - C-h org-src-fontify-natively RET
-  - C-c ^ (org-sort)
-  - M-<up/down> pour les paragraphes
-  - question des overlays (org-src-background)
-  - C-x C-e (dans org-mode ou elisp)
-
-*** Search
-
-- C-s C-w C-w
-- C-s M-e : éditer la recherche en cours
-- C-s M-p/n : browser search history
-- C-s C-M-i : complétion sur l'historique de recherche
-- C-s M-s r : toggle regexp search
-- C-s M-s c : toggle case-folding
-- C-s M-s SPC : toggle whitespace lax search
-- C-s M-s o : occur
-
-*** Dired
-
-- find-grep
-- Q to re-replace
-
-*** Org-mode caldav
-*** Regular expressions
-
-- syntax
-- use within re-search-forward
-
-*** Interactive calls
-*** Narrowing C-x n 
-
-C-x n n : narrow-to-region
-C-x n s : narrow-to-subtree
-C-x n w : widen
-
-*** Functions to narrow
-*** Functions to save match data
-
-*** Instrumenting a function
-*** 15 minutes tutorial emacs-doctor
-
-Nouveautés :
-
-- lisp-interaction-mode
-- switch-to-buffer-other-window
-  - get-buffer-create
-- erase-buffer
-- insert
-- format
-- (progn (+ 1 2) (+ 3 5))
-- (setq myliste '(1 2)) (push 0 myliste)
-- (mapcar (lambda(s) (1+ s))  '(1 2))
-- (mapconcat (lambda(s) (concat s "@")) '("a" "b" "c") "-")
-- while
-- replace-match
-- add-text-properties
-- other-window
-- car cdr
-
-*** Manipulating lists
-
-** To be seen
-
-|                                           | Time | Spent |
-|-------------------------------------------+------+-------|
-| Moving the cursor                         |   10 |       |
-| Org-mode quick start                      |   20 |       |
-| Elisp 15 minutes tutorial                 |   20 |       |
-| Regular expressions                       |   20 |       |
-| Building regular expressions              |   30 |       |
-| Interactive search                        |   30 |       |
-| Basic (re-searching)                      |   30 |       |
-| Deleting, killing, yanking                |   30 |       |
-| Interactive macros                        |   30 |       |
-| Renaming files with a macro and a counter |      |       |
-| Using the mark                            |      |       |
-|-------------------------------------------+------+-------|
-| Functions, lambda and commands            |   30 |       |
-| Manipulating lists and their elements     |   30 |       |
-| Mapping over a list                       |   30 |       |
-| Programmatic buffers manipulations        |   30 |       |
-| Defining variables and functions          |   30 |       |
-| Defining variables and options            |   30 |       |
-| Using interactive                         |   30 |       |
-| File cleanup                              |      |       |
-|-------------------------------------------+------+-------|
-| Emacs history overview                    |      |       |
-| Emacs directory overview                  |      |       |
-| Emacs vocabulary                          |      |       |
-| Modifiers and keybindings                 |      |       |
-|-------------------------------------------+------+-------|
-| Total minutes                             |  180 |     0 |
-#+TBLFM: @24$2=vsum(@3..@-1)::@25$3=vsum(@3..@-1)
 * Emacs generalities
 
 ** Emacs history overview
@@ -810,7 +685,7 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 
 See =org-preserve-lc= for ,@body.
 
-** TODO Using the debugger (1)
+** Using the debugger (1)
 * Emacs Lisp 2: programming a new mode
 
 ** Mode basics
@@ -826,26 +701,28 @@ See =org-preserve-lc= for ,@body.
 - provide
 - require
 
-** TODO Using derived-mode
-** TODO Menus, modeline, headline and keybindings
-** TODO Fontification
-
+** Using derived-mode
+** Menus, modeline, headline and keybindings
+** Fontification
+   
 - examining text properties with =C-u C-x ==
 - set text-properties
 
-** TODO The syntax-table
-** TODO Customization
+** The syntax-table
+** Customization
+
 * Emacs Lisp 3: advanced Elisp and mode programming
 
-** TODO Lisp 1 and Lisp 2
-** TODO Advice and hooks
-** TODO Autoloading functions
-** TODO Using lexical-binding
-** TODO Overlay properties
-** TODO Tabulated display
-** TODO Major hooks
-** TODO The Emacs debugger (2)
-** TODO The Emacs profiler
+** Lisp 1 and Lisp 2
+** Advice and hooks
+** Autoloading functions
+** Using lexical-binding
+** Overlay properties
+** Tabulated display
+** Major hooks
+** The Emacs debugger (2)
+** The Emacs profiler
+
 * Org-mode 1: basic functions, workflows, reports
 
 ** org-mode as an outliner
@@ -868,482 +745,48 @@ See =org-preserve-lc= for ,@body.
 - publishing projects
 
 ** org-mode as TODO lists manager
-** Agendas views
+** agendas views
 
 - predefined agenda views
 - custom agenda views
 - agenda blocks
 
-** TODO Exploring workflows (GTD, etc.)
+** Exploring workflows (GTD, etc.)
+
 * Org-mode 2: Org table and Org Babel
 
-** TODO Main spreadsheet functionalities
-** TODO Linking tables
-** TODO Embed and execute code from org-mode
-** TODO Get the result of embedded code
-** TODO Use Org Babel to export code et results
+** Main spreadsheet functionalities
+** Linking tables
+** Embed and execute code from org-mode
+** Get the result of embedded code
+** Use Org Babel to export code et results
 * Miscellaneous
 
-** TODO Tramp
-** TODO Writing an Org-mode exporter
-** TODO Emacs package management
-** TODO Using magit
-** TODO flycheck
-** TODO semantic-refactor, xref
-** TODO Interesting utilities
+** Swap control and caps lock
+
+: !
+: ! Swap Caps_Lock and Control_L
+: !
+: remove Lock = Caps_Lock
+: remove Control = Control_L
+: keysym Control_L = Caps_Lock
+: keysym Caps_Lock = Control_L
+: add Lock = Caps_Lock
+: add Control = Control_L
+
+** Tramp
+** Writing an Org-mode exporter
+** Emacs package management
+** Using magit
+** Flycheck
+** Semantic-refactor, xref
+** Proced
+** thing-at-point
+** seq.el
+** How to contribute to GNU Emacs?
+** Emacs configuration file organization
+
+- one vs multiple .el configuration files
+- "tangling" a .el configuration file from a .org file
+- [[https://github.com/jwiegley/use-package][use-package]]
 
-- proced
-** TODO thing-at-point
-
-- find the word at point
-
-** TODO seq.el
-** TODO How to contribute to GNU Emacs?
-** TODO Emacs configuration file organization
-* Exercises
-
-** Basic (re-)searching
-
-- open a buffer
-- insert some text
-- go back to the beginning of the buffer
-- go back to the beginning of the buffer using =M-x=
-- search for part of the text using incremental search
-- search for part of the text using a regular expression
-- switch from search to i-search
-- re-search for another part of the string
-- go back to the beginning of the buffer
-- re-search again for the previous search
-- re-search again and edit the search string
-
-** Renaming files with a macro and a counter
-
-- C-x d [go to a directory with fake files] RET
-- C-x C-q to switch off read-only in dired
-- create a macro to rename file using a counter
-
-** Using the mark
-
-- find a file
-- set the mark at some point
-- move around and see the activated region
-- set the mark in another place
-- copy ("kill") the region
-- set the mark
-- deactivate the transient region immediately
-- go the last mark position
-- set the mark
-- store the position in a register
-- find another file
-- go back to the stored position
-
-** File cleanup
-
-- open a .el file
-- go to the beginning of the buffer
-- clean up trailing whitespaces
-- clean up duplicate lines
-- downcase a region
-- find camelcase words
-- create a macro to downcase all camel words
-- convert 2+ blank lines to one blank line
-
-** Selecting and moving paragraphs in org files
-
-- open an =.org= file
-- add a paragraph
-- select the paragraph (=M-h=)
-- yank the paragraph several times
-- go a the beginning of a paragraph
-- move it down several time
-- try to do the same with list items
-- try to do the same with subtrees
-- try =C-c @= to select the current subtree
-- perform a replacement =M-%= in the selected subtree
-
-** Org table manipulations
-
-- create a table (=org-table-create=)
-- select the table
-- unselect the table
-- move from cell to cell with TAB
-- M-<up/down> to move lines
-- M-<lef/right> to move columns
-- =org-table-transpose-table-at-point=
-- =C-c }= to toggle coordinates
-- insert a new column
-- insert a new row
-
-** Org spreadsheets formulas
-
-- create a table (=org-table-create=)
-- add some names in the first row
-- add some disciplines in the first column
-- add numbers in the lines below (e.g. marks for exams)
-- compute the mean by discipline (=C-c ==)
-- compute the mean by student (=C-u C-c ==)
-- increment a value in the line below
-- create a new column at the end
-- compute the mean using an Elisp function
-- create a new column at the end
-- insert the value of the first column using an Elisp function
-
-** Org list manipulation
-
-- make a list
-- use M-RET to create a new item
-- M-<up/down> to move items up/down
-- M-<lef/right> to promote/demote items
-- go in the middle of the last item
-- create a new item by splitting the current one
-- turn the current item into a checkbox item
-- tick the current item checkbox
-- turn the list level to a checkbox list
-- tick all checkboxes
-- convert one item into a headline
-- select all the list
-- convert all list items into headlines
-- sort the list alphabetically
-
-** Add keybindings
-
-- add a fundamental-mode keybinding
-- add a global keybinding
-- unbind a key globally
-
-** Global mode setting and local variables
-
-- open a .txt file
-- change =fill-column= using a local variable
-
-** Narrowing and checking point
-
-- narrow to the current region
-- widen
-- narrow to the current paragraph
-- narrow to the current defun
-- narrow to the current sexp
-- check (point-min) (point-max) (buffer-size)
-
-*** Functions
-
-- mark-sexp
-- buffer-narrowed-p
-- save-restriction
-- save-window-restiction
-
-** Saving various buffer state
-
-- write a function telling whether the buffer is narrowed
-
-- write a function that preserves the window state after widening
-
-- Find the last word of the buffer, display it for 2 second (with the
-  cursor on the first character of this last word), then restore the
-  initial cursor position.
-
-- When in a narrowed state, display the first word in the invisible
-  part of the buffer, display it (with the cursor at the beginning of
-  the word), then restore the narrowed state and the cursor position.
-
-  - beginning-of-buffer
-  - end-of-buffer
-  - bobp (synonyme de beginning of buffer-p ?)
-  - eobp (synonyme de end of buffer-p ?)
-  - (goto-char (point-min))
-  - (re-search-backward "\\`" nil t)
-
-- Find the last word before the end of the current sentence.  Return
-  the position of the first character of the word in the first match.
-
-- Find the start of a defun, match the name of the defun, narrow to
-  the defun, find the next opening parenthesis, find the next
-  argument, return the name of the function.
-
-*** Functions
-
-- save-excursion
-- save-restriction
-- save-match-data
-- save-window-excursion
-- match-beginning
-- match-end
-- match-string
-
-** Interactive buffer manipulations
-
-- list buffers
-- mark several buffers for saving
-- perform the saving
-
-** Programmatic buffers manipulations
-
-- write a function that insert the names of all live buffers
-- write a function that insert those names in alphabetic order
-- write a function that insert those names by buffer-size
-- write a function that displays something in a temporary buffer
-- write a function that creates a new buffer and switches to it,
-  possibly in a new window
-- write a function that display a new buffer in a new window while
-  asking directly for something in the minibuffer (the info buffer
-  should disappear after the user entered a string)
-
-*** Functions
-
-- buffer-list
-- buffer-size
-- buffer-string
-- buffer-substring
-- get-buffer-create
-- sort
-- switch-to-buffer-other-window
-- with-buffer-modified-unmodified
-- with-current-buffer
-- with-current-buffer-window
-- with-output-to-string
-- with-output-to-temp-buffer
-- with-temp-buffer
-- with-temp-buffer-window
-
-** Navigating in Elisp code
-
-*** Keybindings
-
-- C-M-a: beginning-of-defun
-- C-M-e: end-of-defun
-- C-M-x: eval-defun
-- C-u C-M-x: eval-defun and edebug it
-- C-M-f: forward-sexp
-- C-M-b: backward-sexp
-- C-M-u: forward-sexp
-- C-M-d: down-list
-- C-M-k: kill-sexp
-- C-M-p: backward-list
-- C-M-n: forward-list
-
-** Handling errors in code
-
-- Write a function which reads a string and return an error when the
-  string contain a certain character.
-
-- Write a function that reads two numbers p and q and return a result
-  when it makes sense, or an error with a custom message when q=0.
-
-- Write a function that reads two numbers p and q and return the
-  result when it makes sense, and ask for another digit when the
-  second is 0.
-
-*** Functions
-
-- condition-case
-- unwind-protect
-- ignore-errors
-- user-error
-- error
-
-** Defining variables and options
-
-Define a variable.
-
-Get the value of the variable.
-
-Add a docstring to the variable.
-
-Convert the variable into an option.
-
-Customizing the value of the option using customize-variable.
-
-Add a custom group.
-
-Put the new option in this group.
-
-Visit the group and set the value of the variable from here.
-
-Define a function.
-
-Add a docstring to the function.
-
-Run M-x checkdoc RET to check the syntax of the docstring.
-
-Set a buffer-local variable.
-
-Change the value of the variable in the buffer.
-
-Check the value of the variable in two different buffers.
-
-** Using interactive
-
-Create a function that asks for a name and returns "Hello [name]!" in
-the minibuffer and pause for two seconds.
-
-Call the function.
-
-Make the function interactive and call the command.
-
-Add an optional raw prefix argument to the function and display the
-value of the prefix argument in the message.
-
-Use =current-prefix-arg= to display the value of the prefix argument.
-
-Use (interactive "s...") to ask for a name and display it.
-
-Use (interactive "B...") to ask for a buffer and display it.
-
-*** Examples
-
-#+BEGIN_SRC emacs-lisp
-(defun my-hello (&optional arg)
-  "Display your name."
-  (interactive "P")
-  (let ((name (read-from-minibuffer "What's your name? ")))
-    (message "Hello %s! [arg is %s]" name arg)
-    (sit-for 1)
-    (message "The prefix argument value is %s" current-prefix-arg)
-    ;; (beep)
-    ))
-
-(defun my-hello2 (name)
-  (interactive "sWhat's your name? ")
-  (message "Hello %s!" name))
-
-(defun my-visit-buffer (buf)
-  (interactive "BWhat buffer? ")
-  (switch-to-buffer-other-window buf))
-#+END_SRC
-
-** Manipulating strings
-
-Make a list of 20 (possibly identical) characters.
-
-Create a new string by concatenating the list of characters.
-
-Return a string of the first 5 characters from this string.
-
-Store the buffer string in a variable.
-
-Replace tabs by spaces in this string.
-
-Return the number of lines in this string.
-
-** Building regular expressions
-
-Match every letter from a-e.
-
-Match every letter from a-e and A-E.
-
-Match exactly one digit followed by at least two letters.
-
-Match a number from 3 to 6 digits followed by a dot.
-
-Match an opening parenthesis.
-
-Match the content of a pair of square brackets and return it.
-
-Match every character in the buffer below point.
-
-** Manipulating lists and their elements
-
-Make a list of five strings.
-# (setq testlist (append (make-list 5 "abc") '("def")))
-
-Return the first element of the list.
-# (reverse testlist)
-# (last testlist)
-
-Return the number of elements of the list.
-# (length testlist)
-
-(cdr (cdr (cdr '(1 2 3 4 5))))
-
-Store the list in a variable.
-
-Replace the car of the list.  (setcar)
-
-Replace the cdr of the list.  (setcdr)
-
-Replace the 4th element of the list.  (nthcdr)
-
-*** Hints
-
-(setq my-list '("a" "b" "c" "d" "e"))
-(setcar my-list "x")
-(setcdr my-list "y")
-(setcar (nthcdr 3 my-list) "x")
-(eval 'my-list)
-
-** Mapping over a list
-
-Make a list of strings.
-
-Add a new string at the beginning of the list.
-
-Add a new string at the end of the list.
-
-Concatenate all strings in this list.
-
-For each string in this list, append "_" and return the new list.
-
-Make a list of random numbers.
-
-Sort the list by numerical order.
-
-Write a function that create a random list of numbers sorted by
-numerical value.
-
-*** Hints
-
-# - make-list
-# - random
-# - (sort '(1 2 4 3) '<)
-
-** Use a recursive function to implement "flatten"
-
-(append '(1) '(2) '(3) '(4))
-
-#+BEGIN_SRC emacs-lisp
-(defun flatten (x)
-  (cond ((null x) nil)
-        ((listp x)
-         (append (flatten (car x)) (flatten (cdr x))))
-        (t (list x))))
-
-(flatten '((1 2) ((3 4))))
-#+END_SRC
-
-** Org-mode quick start
-
-Create an .org file.
-
-Insert a new heading with =M-RET=.
-
-Make it a TODO item with =C-c C-t=.
-
-Switch the todo state from TODO to DONE with =S-<right>=.
-
-Use =C-c C-q= to add a tag.
-
-Write a paragraph and a one-line todo (as a paragraph).
-
-Convert the current line to a list with C-c -.
-
-Convert the current line to a heading with C-c *.
-
-Convert back to a list item with C-c -.
-
-Convert the current list item to a checkbox with C-u C-c C-c.
-
-Move the list up with =M-<up>=.
-
-Sort the list alphabetically with =C-c ^ a=.
-
-Create a new todo.
-
-Set it to be done today with =C-c C-s RET=.
-
-View the agenda for the week with =C-c a a=.
-
-View the list of all todo tasks with =C-c a t=.
-
-Insert a code block by entering =< s TAB= at the beginning of a line.
-
-Add emacs-lisp so that the code block knows we are writing Elisp code.

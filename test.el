@@ -1,29 +1,36 @@
+;; Interactively ask for your name, display it in the echo area
 (defun my-new-function (name)
   "Display my name."
-  (interactive "sNom: ")
-  (message "Votre nom est %s" name))
+  (interactive "sName: ")
+  (message "Your name is %s" name))
 
-(setq mytest (make-list 5 "abc"))
-(length mytest)
+;; Make a list of five strings "abc"
+(setq my-list (make-list 5 "abc"))
 
+;; Return the length of the list
+(length my-list)
+
+;; Ask for a buffer and switch to it
 (defun my-find-buffer (buf)
   "Find a buffer."
   (interactive "BWhich buffer? ")
   (switch-to-buffer-other-window buf))
 
+;; Test the numerical prefix
 (defun my-numerical-prefix-test (arg)
-  ""
+  "Test the value of the numerical prefix."
   (interactive "p")
-  (message "La valeur de l'argument est %s" arg))
+  (message "The value of the prefix argument is %s" arg))
 
-(defun test ()
-  (let ((a "arnold")
-	(b "beatrice")
-	c d e)
-    (message "%s" c)))
+;; First use of `let'
+(defun my-display-strings ()
+  (let ((a "Arnold")
+	(b "Beatrice")
+	c d e)         ; empty locally-bound variables
+    (message "%s %s %s %s" a b c d)))
 
 (defun my-raw-prefix-test (arg)
-  ""
+  "Test the raw prefix value."
   (interactive "P")
   (cond ((equal arg '(4))
 	 (message "C-u n'a été tapé qu'une fois"))
@@ -32,27 +39,16 @@
 	(t (message "La valeur de l'argument est %s" arg))))
 
 (defun my-narrowing (start end)
-  ""
+  "Narrow and deactivate the mark."
   (interactive "r")
   (narrow-to-region start end)
   (deactivate-mark))
 
-;; (when (re-search-forward
-;;        "test" ;; le pattern
-;;        ;; la position limite (d'habitude nil)
-;;        (save-excursion
-;; 	 (save-match-data
-;; 	   ;;	   (re-search-forward "raw" nil t)))
-;; 	   (re-search-forward "\\'" nil t)))
-;;        ;;
-;;        t)
+;; M-x goto-char RET
+;; Use C-u C-M-x to run `edebug-defun'
 
-;; goto-char 
-;; C-u C-M-x : edebug-defun
-;; (my-raw-prefix-test)
-
-(defun sns-return ()
-  ""
+(defun my-return ()
+  "Custom RET behavior."
   (let ((number (save-excursion
 		  (beginning-of-line)
 		  (when (looking-at "^\\([0-9]\\)")
@@ -65,29 +61,29 @@
       (end-of-line)
       (insert "\n"))))
 
-(defun sns-inc-string (str)
-  "Increment the first number found in a string."
+(defun inc-string (str)
+  "Increment the first number in a string, return the string."
   (if (string-match "^\\(.*\\)\\([0-9]+\\)\\(.*$\\)" str)
       (format "%s%s%s"
-	      (match-string 1 str)
-	      (1+ (string-to-number (match-string 2 str))) ;; integer
+	      (match-string 1 str) ; mandatory mention of `str'
+	      (1+ (string-to-number (match-string 2 str))) ; integer
 	      (match-string 3 str))
     str))
 
-(sns-inc-string "1")
-
-(sns-inc-string "abc1def")
+;; Test the function
+(inc-string "1")
+(inc-string "abc1def")
 
 (defun buffer-with-my-region (beg end)
-  ""
+  "Create a new buffer containing the selected region."
   (interactive "r")
   (let ((bf (buffer-substring beg end)))
-    (switch-to-buffer-other-window (get-buffer-create "*je travaille*"))
+    (switch-to-buffer-other-window (get-buffer-create "*tmp buffer*"))
     (erase-buffer)
     (insert bf)))
 
 (defun buffer-with-my-region-2 (beg end)
-  ""
+  "Create a new buffer with the region, perform a replacement."
   (interactive "r")
   (let ((bf (buffer-substring beg end)))
     (when (with-temp-buffer

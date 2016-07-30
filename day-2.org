@@ -1,7 +1,7 @@
 #+TITLE: Emacs training day 2
 #+COLUMNS: %40ITEM(Task) %10TODO(TODO) %15Team(Team) %10Effort(Effort){:} %CLOCKSUM
 #+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00
-#+PROPERTY: Team_ALL damien philippe bastien
+#+PROPERTY: Team_ALL alice bob ev
 
 * Switch control and tab
 
@@ -14,14 +14,15 @@
 : keysym Caps_Lock = Control_L
 : add Lock = Caps_Lock
 : add Control = Control_L
+
 * Emacs general useful keybindings
 
 - C-x i : insert-file
 - C-x h : mark-whole-buffer
-- M-h : org-mark-element (ou le paragraphe hors org-mode)
+- M-h : org-mark-element (or the paragraph outside org-mode)
 - #+include: xmodmaprc
 - C-x C-b : list-buffers (s d x m S)
-- C-h m : to check the major and minor modes documentation
+- C-h m : to check major and minor modes documentation
 - C-x s : save-some-buffers
 - C-x } : enlarge-window-horizontally
 - C-x { : shrink-window-horizontally
@@ -29,26 +30,26 @@
 - C-c ^ : to go up one level
 - list-packages
 - C-h i d m : navigating info
-- M-x beacon-mode
-- M-x bm - overriden by C-x C-@ ?
+- M-x beacon-mode RET (install beacon from GNU ELPA)
+- M-x bm (useless, use C-x C-@ instead?)
 - M-x visible-mode
-- C-x d et C-u C-x d
-- dans dired: + pour créer un répertoire
-- dans dired: g
-- dans dired: % m
-- dans dired: C-x C-q pour pouvoir éditer
-- M-x eshell RET (pour faire un touch)
+- C-x d and C-u C-x d
+- within dired: + to create a répertoire
+- within dired: g
+- within dired: % m
+- within dired: C-x C-q to edit files and dir names
+- M-x eshell RET
 - M-% : query-replace
 - C-M-% : query-replace-regexp
-- get help
-  - C-x C-k C-h
+- knowing keybindings possibilities:
+  - C-x C-k C-h (Global Bindings Starting With C-x C-k)
   - C-x C-h
   - C-x 8 C-h
 - delete-trailing-whitespace
 - delete-duplicate-lines
-- regexp-opt
-- regexp-quote
-- M-:
+- regexp-opt : optimize regular expressions
+- regexp-quote : return a regex match the entered string
+- M-: : eval-expression
 - org-imenu-get-tree
 
 * Manipulating windows
@@ -136,9 +137,9 @@ Using macros to rename (with C-x C-q) in dired.
   - deadline C-c C-d
 - org-agenda-files
 - C-c [
-- S-<left/right> S-<up/down> dans les timestamps
-- dans l'agenda S-<left/right> pour changer la date
-- dans l'agenda use `t' to mark done
+- S-<left/right> S-<up/down> in timestamps
+- in the agenda S-<left/right> to change the date
+- in the agenda use `t' to mark a headline done
 - (setq org-agenda-skip-deadline-if-done t)
 - (setq org-agenda-skip-scheduled-if-done t)
 - checking the todo list
@@ -146,8 +147,8 @@ Using macros to rename (with C-x C-q) in dired.
 - agenda narrowing (by tag, by regexp, / / = |)
 - tag match
 - todo/properties/scheduled match
-- . dans agenda
-- v d / v w / v m
+- . in the agenda to go back to today
+- v d / v w / v m to change the agenda span
 - setting tags (C-c C-q)
 - properties (C-c C-x p)
 - column view (C-c C-x c)
@@ -157,9 +158,9 @@ Using macros to rename (with C-x C-q) in dired.
 - capture (C-c c)
 - refiling (C-c C-w)
 - org-goto (C-c C-j)
-- demote avec S-M-<left/right> qui garde la structure
-- C-c C-x C-r pour insérer un tableau avec les durées
-- C-c C-x e pour insérer une propriété "Effort"
+- demote with S-M-<left/right> to preserve the structure
+- C-c C-x C-r to insert the clock table
+- C-c C-x e to insert the "Effort" property
 - #+COLUMNS: %40ITEM(Task) %10Effort(Effort){:} %CLOCKSUM
 - Effort_all
 
@@ -178,13 +179,12 @@ equal = same content (have equal component)
 
 * Dynamic binding
 
-(Quick definition).
+(Quick definition: see [[info:elisp#Dynamic%20Binding][the manual]].)
 
 * Creating a mode
 
 - https://www.emacswiki.org/emacs/SampleMode
 - https://www.emacswiki.org/emacs/ModeTutorial
-
 - require, provide, (featurep 'sns)
 - defvar
 - font-lock-add-keywords (font-lock-defaults)
@@ -206,7 +206,7 @@ equal = same content (have equal component)
 ** STRT Task 1
    :PROPERTIES:
    :EFFORT:   2:00
-   :TEAM:     bastien
+   :TEAM:     alice
    :END:
    :LOGBOOK:
    CLOCK: [2016-07-21 jeu. 14:20]--[2016-07-21 jeu. 15:05] =>  0:45
@@ -215,5 +215,5 @@ equal = same content (have equal component)
 ** LONG Task 2
    :PROPERTIES:
    :EFFORT:   0:10
-   :TEAM:     damien
+   :TEAM:     bob
    :END:
