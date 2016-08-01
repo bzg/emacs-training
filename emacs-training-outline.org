@@ -148,7 +148,7 @@ https://www.jwz.org/doc/emacs-timeline.html
 
 *** General keybinding conventions
 
- - C-x [character] :: mode-independant keybindings.
+ - C-x [character] :: mode-independent keybindings.
 
  - C-c ... :: mode-dependant keybindings.
 
