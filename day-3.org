@@ -2,29 +2,29 @@
 
 * Emacs general utilities
 
-- C-o : open-line
+- =C-o= : open-line
 - macro
-- M-| : shell-command-on-region
-- (region-beginning)
-- (region-end)
+- =M-|= : =shell-command-on-region=
+- =(region-beginning)=
+- =(region-end)=
 - macros
-- funcall
-- apply
-- (completing-read "Prompt: " '("alice" "bob" "eva"))
-- (read-from-minibuffer "Prompt: ")
-- (read-regexp "Votre regexp: ")
-- regexp-quote
-- (regexp-opt '("abc" "bcd"))
-- read-char
-- bolp (beginning of line?)
-- eolp (end of line?)
+- =funcall=
+- =apply=
+- =(completing-read "Prompt: " '("alice" "bob" "eva"))=
+- =(read-from-minibuffer "Prompt: ")=
+- =(read-regexp "Your regexp: ")=
+- =regexp-quote=
+- =(regexp-opt '("abc" "bcd"))=
+- =read-char=
+- =bolp= (beginning of line?)
+- =eolp= (end of line?)
 
 * Using timers
 
 Variables:
 
-- timer-list
-- timer-idle-list
+- =timer-list=
+- =timer-idle-list=
 
 * Cloning and compiling emacs
   
@@ -32,19 +32,19 @@ Variables:
 
 * org-mode table and spreadsheets
 
-- org-table-create
-- org-table-import (csv, tsv)
-- TAB et S-TAB
-- S-RET
-- C-c .
-- S-M-left : supprimer la colonne
-- S-M-right : crée une nouvelle colonne
-- C-c { : active table formulas debugger
-- S-M-up : supprimer la ligne
-- S-M-down : crée une nouvelle ligne
+- =org-table-create=
+- =org-table-import= (csv, tsv)
+- =TAB= and =S-TAB=
+- =S-RET=
+- =C-c .=
+- =S-M-left= : delete the column
+- =S-M-right= : insert a new column
+- =C-c {= : activate the table formulas debugger
+- =S-M-up= : delete the line
+- =S-M-down= : insert a new line
 - [[info:org#The%20spreadsheet][info:org#The spreadsheet]]
-- C-c = : column formula
-- C-u C-c = : field formula
+- =C-c == : column formula
+- =C-u C-c == : field formula
 - references
 - formulas debugger
 - remote ref
@@ -59,8 +59,8 @@ See [[file:test.org::*Table%201][Table 1]] and [[file:test.org::*Table%202][Tabl
 
 [[elisp:(message "yo")]]
 
-Check org-confirm-elisp-link-function and
-org-confirm-shell-link-function.
+Check =org-confirm-elisp-link-function= and
+=org-confirm-shell-link-function=.
 
 * Org-mode babel
 
@@ -106,22 +106,22 @@ See =org-preserve-lc= for a use of ,@body.
 
 * Using the mode-line
 
-- global-mode-string (a list!)
-- force-mode-line-update
+- =global-mode-string= (a list!)
+- =force-mode-line-update=
 
 * Code snippets init files
 
 - dblock in org-mode
-- (setq org-support-shift-select t)
-- (setq use-dialog-box nil)
-- (define-key global-map "\M-Q" 'unfill-paragraph)
-- obarray
-- intern
-- benchmark-run
-- defface
-- shell-command
-- org-caldav-sync
-- (setq org-export-with-broken-links t)
+- =(setq org-support-shift-select t)=
+- =(setq use-dialog-box nil)=
+- =(define-key global-map "\M-Q" 'unfill-paragraph)=
+- =obarray=
+- =intern=
+- =benchmark-run=
+- =defface=
+- =shell-command=
+- =org-caldav-sync=
+- =(setq org-export-with-broken-links t)=
 
 #+NAME: Example dynamique block
 #+BEGIN_SRC org
@@ -135,13 +135,13 @@ See =org-preserve-lc= for a use of ,@body.
 
 * ert, elp, profile-start, benchmark-run
 
-- elp-intrument-function
-- elp-results
-- profile-start, profile-report
-- benchmark-run
-- ert
-- assert
-- checkdoc
+- =elp-intrument-function=
+- =elp-results=
+- =profile-start=, =profile-report=
+- =benchmark-run=
+- =ert=
+- =assert=
+- =checkdoc=
 
 * Use org-cycle in emacs-lisp-mode
   
@@ -171,25 +171,25 @@ See =org-preserve-lc= for a use of ,@body.
 * Continue sns-mode (auto-fill, indent-line, etc.)
 
 - Write sns-return to do the right thing
-  - looking-at
-  - looking-back
-- Fix font-lock-defaults (don't use font-lock-add-keywords, [[info:elisp#Font%20Lock%20Basics][See manual]])
-- auto-fill behavior (See fill-paragraph-function)
-- indent-line behavior (See indent-line-function)
+  - =looking-at=
+  - =looking-back=
+- Fix =font-lock-defaults= (don't use =font-lock-add-keywords=, [[info:elisp#Font%20Lock%20Basics][See manual]])
+- auto-fill behavior (See =fill-paragraph-function=)
+- indent-line behavior (See =indent-line-function=)
 - defining options and faces
-  - defgroup
-  - defcustom
-  - defface
-- adding an advice with ad-advice
+  - =defgroup=
+  - =defcustom=
+  - =defface=
+- adding an advice with =ad-advice=
 
 * Continue sns-mode (hooks)
 
-- add-hook : e.g. (add-hook 'lisp-interaction-mode-hook 'auto-fill-mode)
-- remove-hook
-- run-hook
-- delay-mode-hooks
-- before-save-hook
-- before-init-hook
+- =add-hook= : e.g. =(add-hook 'lisp-interaction-mode-hook 'auto-fill-mode)=
+- =remove-hook=
+- =run-hook=
+- =delay-mode-hooks=
+- =before-save-hook=
+- =before-init-hook=
 
 #+BEGIN_SRC emacs-lisp
 ;; Examples: hooks in Org-mode

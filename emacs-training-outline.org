@@ -47,7 +47,7 @@
 As of early 2014, GNU Emacs has had 579 individual commiters
 throughout its history.
 
-https://www.jwz.org/doc/emacs-timeline.html
+Source: https://www.jwz.org/doc/emacs-timeline.html
 
 ** Emacs directory overview
 
@@ -93,7 +93,7 @@ https://www.jwz.org/doc/emacs-timeline.html
 
 - `test' :: holds tests for various aspects of Emacs's functionality.
 
-** Emacs vocabulary
+** Emacs glossary
 
 - active region
 - buffer
@@ -108,7 +108,6 @@ https://www.jwz.org/doc/emacs-timeline.html
 - frame
 - fringe
 - function/command
-- headline
 - headline
 - indent
 - init file
@@ -138,57 +137,49 @@ https://www.jwz.org/doc/emacs-timeline.html
 
 *** Modifiers
 
-- C- : hold the =Control= key
-- M- : hold the =Meta/Alt= key
-- DEL : hold the =Backspace= key
-- RET : hold the =Return= key
-- SPC : hold the =Space= key
-- ESC : hold the =Escape= key
-- TAB : hold the =Tab= key
+- =C-= : hold the =Control= key
+- =M-= : hold the =Meta/Alt= key
+- =DEL= : hold the =Backspace= key
+- =RET= : hold the =Return= key
+- =SPC= : hold the =Space= key
+- =ESC= : hold the =Escape= key
+- =TAB= : hold the =Tab= key
 
 *** General keybinding conventions
 
  - C-x [character] :: mode-independent keybindings.
 
- - C-c ... :: mode-dependant keybindings.
+ - C-c ... :: mode-dependent keybindings.
 
  - C-c [character] :: user-reserved keybindings.
 
 *** Keybindings
 
- - M-y : yank-pop
- - M-w : kill-ring-save
- - C-y : yank
- - C-w : kill-region
- - C-x C-b : list buffers
- - C-x f : set fill column
- - C-x b : switch to buffer
- - C-l : recenter-top-bottom
- - C-a : beginning-of-line
- - C-e : end-of-line
- - M-< : beginning-of-buffer
- - M-> : end-of-buffer
- - M-{ : backward-paragraph
- - M-} : forward-paragraph
- - M-a : backward-sentence
- - M-e : forward-sentence
- - M-b : backward-word
- - M-f : forward-word
- - C-h k : describe-key
- - C-h v : describe-variable
- - C-h f : describe-function
- - M-= : count-words-region
- - C-x l : count-lines-page
- - C-x r m : bookmark-set
- - C-x r s : copy-to-register
- - C-x r SPC : point-to-register
- - C-x r w : window-configuration-to-register
- - C-x r l : bookmark-bmenu-list
- - C-x r i : insert-register
- - C-x r j : jump-to
- - C-u C-x = : what-cursor-position
- - C-x 2 : split-window-below
- - C-h i : info
+ - =C-y= : yank
+ - =M-y= : yank-pop
+ - =C-w= : kill-region
+ - =M-w= : kill-ring-save
+ - =C-x C-b= : list buffers
+ - =C-x b= : switch to buffer
+ - =C-x f= : set fill column
+ - =C-l= : recenter-top-bottom
+ - =C-o= : open-line
+ - =C-h k= : describe-key
+ - =C-h v= : describe-variable
+ - =C-h f= : describe-function
+ - =M-== : count-words-region
+ - =M-c= : capitalize-word
+ - =C-x l= : count-lines-page
+ - =C-x r m= : bookmark-set
+ - =C-x r s= : copy-to-register
+ - =C-x r SPC= : point-to-register
+ - =C-x r w= : window-configuration-to-register
+ - =C-x r l= : bookmark-bmenu-list
+ - =C-x r i= : insert-register
+ - =C-x r j= : jump-to
+ - =C-u C-x == : what-cursor-position
+ - =C-x 2= : split-window-below
+ - =C-h i= : info
 
 ** Finding and saving files
 
@@ -205,6 +196,12 @@ https://www.jwz.org/doc/emacs-timeline.html
 - =C-f/b= : move one character forward/backward
 - =M-a/e= : move to the beginning/end of sentence
 - =M-f/b= : move one word forward/backward
+- =C-a= : beginning-of-line
+- =C-e= : end-of-line
+- =M-<= : beginning-of-buffer
+- =M->= : end-of-buffer
+- =M-{= : backward-paragraph
+- =M-}= : forward-paragraph
 - =C-<up/down>= : move one paragraph up/down
 - =C-<left/right>= : move one character left/right
 
@@ -213,19 +210,20 @@ See sentence end definition: C-h v sentence-end TAB
 ** Main modes and libraries
 
 - bookmark
-- calc
 - calendar
+- calc
 - dired (and dired-x)
 - doc-view
 - electric-indent-mode
 - electric-pair-mode
+- global-font-lock-mode
 - epa-mode
-- ERC
-- Gnus
+- erc
+- gnus
 - linum-mode
 - org-mode
 - register
-- info mode
+- info
 
 ** Interactive macros
 
@@ -248,31 +246,33 @@ Example : =C-x ( aaa C-x C-k C-i C-x )=
 
 See also:
 
-- kill-whole-line
-- kill-read-only-ok
-- copy-region-as-kill
-- copy-rectangle-as-kill
-- copy-line
+- kill-whole-line (option)
+- kill-read-only-ok (option)
+- copy-region-as-kill (command)
+- copy-rectangle-as-kill (command)
+- copy-line (command)
+- open-line (command)
 
 ** Interactive search
 
-Go to the main Info buffer with =C-h i=.  Hit =d= to make sure you are at
-the top-level of the Info documentation, and go at the beginning of
+Go to the main Info buffer with =C-h i=.  Hit =d= to make sure you are
+at the top-level of the Info documentation, and go at the beginning of
 the buffer with =M-<=.
 
 Perform an incremental search for "lisp" with =C-s lisp=.
 
-Hit =RET= to deactivate the search and the search matches highlighting.
+Hit =RET= to deactivate the search and the highlighting of search
+matches.
 
 Hit =C-s C-s= to search for the last search string again.
 
-Hit =M-e= to edit the search string (change it to "mode") and RET to go
-back to the search mode.
+Hit =M-e= to edit the search string (change it to "mode") and =RET= to
+go back to the search mode.
 
 Hit =M-p= to browse the search history and RET to search the selected
 string again.
 
-Restart.
+Go back to the beginning of buffer with =M-<=.
 
 Hit =C-s= to start the search.
 
@@ -280,31 +280,31 @@ Hit =C-q C-j= to search for the newline character.
 
 Hit =C-g= to abort the search.
 
-Hit =C-s= and search for "Mail" : notice only "Mail" will be matched,
-not "mail".
+Hit =C-s= and search for =Mail=: notice only =Mail= will be matched,
+not =mail=.
 
 Hit =C-s= and =M-c= to toggle case folding.
 
-Hit =C-s= and =M-s SPC= to toggle "match spaces loosely" : when matching
-spaces loosely, you can search for a string like "mail  client" and
-still match the "mail client" string.
+Hit =C-s= and =M-s SPC= to toggle "match spaces loosely" : when
+matching spaces loosely, you can search for a string like "mail
+client" and still match the "mail client" string.
 
-Try searching for "maii" instead of "mail" and then hit =DEL= to edit
+Try searching for =maii= instead of =mail= and then hit =DEL= to edit
 the search string by deleting the last character.
 
-Hit =C-s= and search for "mail".  Hit RET on the first occurrence and go
-one word backward with =M-b=.  Now hit =C-s C-w= to search for the word at
-point.  Try again with =C-s C-w C-w= to search for several words at
-point.
+Hit =C-s= and search for =mail=.  Hit RET on the first occurrence and
+go one word backward with =M-b=.  Now hit =C-s C-w= to search for the
+word at point.  Try again with =C-s C-w C-w= to search for several
+words at point.
 
-Hit =C-s C-M-y= to search for the character at point.  Hit =C-M-y C-M-y=
-to add the next two characters to the search.  Hit =C-M-w= to remove the
-last character from the search string.
+Hit =C-s C-M-y= to search for the character at point.  Hit =C-M-y
+C-M-y= to add the next two characters to the search.  Hit =C-M-w= to
+remove the last character from the search string.
 
-Hit =C-s= to start the search.  Hit =M-b= directly, without hitting =RET=.
-Hit =C-SPC M-f M-w= to copy the word at point.  Go back to the beginning
-of the word and hit =M-d= to do the same: since the buffer is read-only,
-you can copy the word at point directly like this.
+Hit =C-s= to start the search.  Hit =M-b= directly, without hitting
+=RET=.  Hit =C-SPC M-f M-w= to copy the word at point.  Go back to the
+beginning of the word and hit =M-d= to do the same: since the buffer
+is read-only, you can copy the word at point directly like this.
 
 Now hit =C-s= again, they =C-y= to "yank" the text in the search area.
 
@@ -313,11 +313,11 @@ Hit =C-s C-M-i= to complete over previous searches.
 In a folded org-mode buffer, search for some invisible text: the
 matched string is automatically unfolded when the point moves to it.
 
-Now go back to the folded mode and hit =C-s M-s i= to search for visible
-text only.  Invisible text won't be matched.
+Now go back to the folded mode and hit =C-s M-s i= to search for
+visible text only.  Invisible text won't be matched.
 
-Hit =M-<= and =C-s= search for "mail".  Now hit =M-s o= to list lines where
-"mail" occurs.
+Hit =M-<= and =C-s= search for =mail=.  Now hit =M-s o= to list lines
+where "mail" occurs.
 
 Hit =C-s= and =M-s r= to switch to regular expression search.
 
@@ -327,10 +327,9 @@ Hit =C-s C-h b= to browse the search options.
 
 - =M-TAB= to run M-x completion-at-point RET
 - abbrev-mode : =C-x a g= and =C-x a i g= (see also =C-x a l=)
-- dabbrev-expand : =M-/=
-- hippie-expand : 
+- dabbrev-expand : =M-/= (see also hippie-expand)
 - yasnippet : template expansion
-- pcomplete : to use when programming a mode
+- pcomplete : custom completion when programming a mode
 
 * Emacs Lisp 1: the basics
 
@@ -338,6 +337,8 @@ Hit =C-s C-h b= to browse the search options.
 
 http://emacs-doctor.com/learn-emacs-lisp-in-15-minutes.html explores
 some of the basic functions of Emacs lisp.
+
+List of concepts seen in this tutorial:
 
 - symbolic expressions (=sexps=)
 - nesting parentheses to combine =sexps=
@@ -391,20 +392,20 @@ some of the basic functions of Emacs lisp.
 
 *** Defining variables and functions
 
-- defvar : define ("initialize") a variable
-- defconst : define a constant
-- setq : (setq [SYM VAL]...)
-- setq-local : (setq-local VAR VAL)
-- defvar-local : (defvar-local VAR VAL &optional DOCSTRING)
-- setf : (setf (cadr x) y) <=> (setcar (cdr x) y)
-- setcar : (setcar CELL NEWCAR)
-- setcdr : (setcdr CELL NEWCDR)
-- defun : define a function
-- defstruct : define an "inline" function
-- defmacro : define a macro
-- defcustom : define an option (customizable variable)
-- boundp : check if a variable is set
-- fboundp : check if a function is set
+- =defvar= : define ("initialize") a variable
+- =defconst= : define a constant
+- =setq= : =(setq [SYM VAL]...)=
+- =setq-local= : (setq-local VAR VAL)
+- =defvar-local= : =(defvar-local VAR VAL &optional DOCSTRING)=
+- =setf= : =(setf (cadr x) y)= <=> =(setcar (cdr x) y)=
+- =setcar= : =(setcar CELL NEWCAR)=
+- =setcdr= : =(setcdr CELL NEWCDR)=
+- =defun= : define a function
+- =defstruct= : define an "inline" function
+- =defmacro= : define a macro
+- =defcustom= : define an option (customizable variable)
+- =boundp= : check if a variable is set
+- =fboundp= : check if a function is set
 
 ** Manipulating lists
 
@@ -448,9 +449,7 @@ See [[*Manipulating lists and their elements][Manipulating lists and their eleme
 A function is the name of a sexp, possibly accepting arguments,
 returning the value of evaluating the sexp.
 
-A command is an interactive function, using "(interactive)".
-
-[[file:~/test.el]]
+A command is an interactive function, using =(interactive)=.
 
 A lambda is an anonymous function.
 
@@ -560,7 +559,19 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 
 ** Mark, Point, Buffer, Insertions
 
-- point-at-*
+- set-mark
+- goto-char
+- point
+- point-at-bol
+- point-at-eol
+- beginning-of-line
+- end-of-line
+- move-beginning-of-line
+- move-end-of-line
+- insert
+- buffer-string
+- buffer-substring
+- buffer-substring-no-properties
 
 ** Regular expressions
 
@@ -617,26 +628,19 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 
 #+BEGIN_SRC emacs-lisp
 (defun my-new-search-function ()
-  "This is my new search function."
+  "My new search function."
   (interactive)
   (if ;; (re-search-forward "" nil t)
-      (re-search-forward "\\([a-z]\\{1,2\\}\\)\\([0-9]+\\)" nil yt)
+      (re-search-forward "\\([a-z]\\{1,2\\}\\)\\([0-9]+\\)" nil t)
       (message
-       "J'ai trouvé deux groupes : \"%s\" et \"%s\""
+       "Found two groups: \"%s\" and \"%s\""
        (match-string 1)
        (match-string 2))
-    (user-error "J'ai rien trouvé")))
+    (user-error "Nothing found")))
 
 (my-new-search-function)
 
-;; (
-;; [
-;; |
-;; a1
 ;; abcde1
-;; abcde3
-;; abcde
-;; abcde
 #+END_SRC
 
 *** References
@@ -683,9 +687,10 @@ See also [[info:elisp#Dynamic%20Binding%20Tips][this info page]] on how to not a
 ;; => 5
 #+END_SRC
 
-See =org-preserve-lc= for ,@body.
+See =org-preserve-lc= in org-mode on how to use ,@body.
 
-** Using the debugger (1)
+** Using the debugger
+
 * Emacs Lisp 2: programming a new mode
 
 ** Mode basics
@@ -693,20 +698,20 @@ See =org-preserve-lc= for ,@body.
 - Major and minor mode
 - derived-mode
 - syntax highlighting
-- kill-all-local-variables
-- modeline (global-mode-string)
-- keybindings (define-key)
-- menu (easy-menu-define)
-- defcustoms
-- provide
-- require
+- =kill-all-local-variables=
+- modeline (=global-mode-string=)
+- keybindings (=define-key=)
+- menu (=easy-menu-define=)
+- =defcustom=
+- =provide=
+- =require=
 
 ** Using derived-mode
 ** Menus, modeline, headline and keybindings
 ** Fontification
    
 - examining text properties with =C-u C-x ==
-- set text-properties
+- =set-text-properties=
 
 ** The syntax-table
 ** Customization
@@ -731,10 +736,12 @@ See =org-preserve-lc= for ,@body.
 
 - headline
 - subtree
+- paragraph / list / table / block
 
 *** Org mode folding
 
 - initial folding state
+- =#+STARTUP: showall=
 
 *** Org mode options
 
@@ -744,7 +751,6 @@ See =org-preserve-lc= for ,@body.
 - blocks
 - publishing projects
 
-** org-mode as TODO lists manager
 ** agendas views
 
 - predefined agenda views
@@ -760,6 +766,7 @@ See =org-preserve-lc= for ,@body.
 ** Embed and execute code from org-mode
 ** Get the result of embedded code
 ** Use Org Babel to export code et results
+
 * Miscellaneous
 
 ** Swap control and caps lock
@@ -773,16 +780,15 @@ See =org-preserve-lc= for ,@body.
 : keysym Caps_Lock = Control_L
 : add Lock = Caps_Lock
 : add Control = Control_L
-
-** Tramp
 ** Writing an Org-mode exporter
 ** Emacs package management
-** Using magit
-** Flycheck
-** Semantic-refactor, xref
-** Proced
-** thing-at-point
+** magit
+** tramp
+** flycheck
+** semantic-refactor, xref
+** proced
 ** seq.el
+** thing-at-point
 ** How to contribute to GNU Emacs?
 ** Emacs configuration file organization
 

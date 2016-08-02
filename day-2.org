@@ -17,85 +17,85 @@
 
 * Emacs general useful keybindings
 
-- C-x i : insert-file
-- C-x h : mark-whole-buffer
-- M-h : org-mark-element (or the paragraph outside org-mode)
+- =C-x i= : =insert-file=
+- =C-x h= : =mark-whole-buffer=
+- =M-h= : =org-mark-element= (or the paragraph outside org-mode)
 - #+include: xmodmaprc
-- C-x C-b : list-buffers (s d x m S)
-- C-h m : to check major and minor modes documentation
-- C-x s : save-some-buffers
-- C-x } : enlarge-window-horizontally
-- C-x { : shrink-window-horizontally
-- M-x proced RET (derived from tabulated-list-mode)
-- C-c ^ : to go up one level
-- list-packages
-- C-h i d m : navigating info
-- M-x beacon-mode RET (install beacon from GNU ELPA)
-- M-x bm (useless, use C-x C-@ instead?)
-- M-x visible-mode
-- C-x d and C-u C-x d
+- =C-x C-b= : list-buffers (s d x m S)
+- =C-h m= : to check major and minor modes documentation
+- =C-x s= : =save-some-buffers=
+- =C-x }= : =enlarge-window-horizontally=
+- =C-x {= : =shrink-window-horizontally=
+- =M-x proced RET= (derived from tabulated-list-mode)
+- =C-c ^= : to go up one level
+- =list-packages=
+- =C-h i d m= : navigating info
+- =M-x beacon-mode RET= (install beacon from GNU ELPA)
+- =M-x bm RET= (useless, use C-x C-@ instead?)
+- =M-x visible-mode RET=
+- =C-x d= and =C-u C-x d=
 - within dired: + to create a répertoire
 - within dired: g
 - within dired: % m
 - within dired: C-x C-q to edit files and dir names
-- M-x eshell RET
-- M-% : query-replace
-- C-M-% : query-replace-regexp
+- =M-x eshell RET=
+- =M-%= : =query-replace=
+- =C-M-%= : =query-replace-regexp=
 - knowing keybindings possibilities:
-  - C-x C-k C-h (Global Bindings Starting With C-x C-k)
-  - C-x C-h
-  - C-x 8 C-h
-- delete-trailing-whitespace
-- delete-duplicate-lines
-- regexp-opt : optimize regular expressions
-- regexp-quote : return a regex match the entered string
-- M-: : eval-expression
-- org-imenu-get-tree
+  - =C-x C-k C-h= (Global Bindings Starting With C-x C-k)
+  - =C-x C-h=
+  - =C-x 8 C-h=
+- =delete-trailing-whitespace=
+- =delete-duplicate-lines=
+- =regexp-opt= : optimize regular expressions
+- =regexp-quote= : return a regex match the entered string
+- =M-:= : =eval-expression=
+- =org-imenu-get-tree=
 
 * Manipulating windows
 
-- C-x o : other-window
-- C-x 1 : delete-other-windows
-- C-x 2 : split-window-horizontally
-- C-x 3 : split-window-vertically
-- C-x 0 : delete-window
-- C-x + : balance-windows
+- =C-x o= : =other-window=
+- =C-x 1= : =delete-other-windows=
+- =C-x 2= : =split-window-horizontally=
+- =C-x 3= : =split-window-vertically=
+- =C-x 0= : =delete-window=
+- =C-x += : =balance-windows=
 
 * Exploring Buffer-menu-mode-map
 
-- see Buffer-menu-mode docstring
+- see =Buffer-menu-mode= docstring
 - conventions for displaying keybindings
   - \\<Buffer-menu-mode-map>
   - \\[buffer-menu-command]
 - bind a command locally
-  - (define-key Buffer-menu-mode-map (kbd "M-o") 'Buffer-menu-view-other-window)
-- global-unset-key
-- local-unset-key
+  - =(define-key Buffer-menu-mode-map (kbd "M-o") 'Buffer-menu-view-other-window)=
+- =global-unset-key=
+- =local-unset-key=
 
 Other functions for list-buffers:
 
 - auto open of .gz files
-- ! in dired to perform the relevant action
-- dired-guess-shell-alist-user
+- =!= in dired to perform the relevant action
+- =dired-guess-shell-alist-user=
 
 * Registers, bookmarks and org-mode links
 
 ** Registers
 
- - C-x r s : copy-to-register
- - C-x r i : insert-register
- - C-x r SPC : point-to-register
- - C-x r j : jump-to
- - C-x r w : window-configuration-to-register
- - M-x register-list (package extern)
- - M-x list-registers RET
+ - =C-x r s= : =copy-to-register=
+ - =C-x r i= : =insert-register=
+ - =C-x r SPC= : =point-to-register=
+ - =C-x r j= : =jump-to-register=
+ - =C-x r w= : =window-configuration-to-register=
+ - =M-x register-list RET= (external package)
+ - =M-x list-registers RET=
 
 ** Bookmarks
 
- - C-x r m : bookmark-set
- - C-x r M : bookmark-set-no-overwrite
- - C-x r b : bookmark-jump
- - C-x r l : bookmark-bmenu-list
+ - =C-x r m= : =bookmark-set=
+ - =C-x r M= : =bookmark-set-no-overwrite=
+ - =C-x r b= : =bookmark-jump=
+ - =C-x r l= : =bookmark-bmenu-list=
 
 ** Org links
 
@@ -107,8 +107,8 @@ Global org-mode keys:
 (define-key global-map "\C-cc" 'org-capture)
 #+END_SRC
 
-- C-c C-l : org-insert-link
-- C-c C-o : org-open-at-point
+- =C-c C-l= : =org-insert-link=
+- =C-c C-o= : =org-open-at-point=
 
 * Interactive macros
 
@@ -119,7 +119,7 @@ Global org-mode keys:
 - =C-x C-k C-i= : to create a counter and insert its value
 - =C-x C-k RET=: edit last macro in a buffer
 - =C-x C-k C-n=: cycle through macros
-- =C-x C-k n=: name the last macro
+- =C-x C-k n= : name the last macro
 - =C-x e e e e e= : repeat last macro
 - C-h f kmacro-
 
@@ -133,49 +133,49 @@ Using macros to rename (with C-x C-q) in dired.
 - speed commands
   - (setq org-use-speed-commands t)
 - scheduled and deadline
-  - schedule C-c C-s
-  - deadline C-c C-d
-- org-agenda-files
-- C-c [
-- S-<left/right> S-<up/down> in timestamps
-- in the agenda S-<left/right> to change the date
+  - schedule =C-c C-s=
+  - deadline =C-c C-d=
+- =org-agenda-files=
+- =C-c [= to add the current file to agenda files
+- =S-<left/right>= =S-<up/down>= in timestamps
+- in the agenda =S-<left/right>= to change the date
 - in the agenda use `t' to mark a headline done
-- (setq org-agenda-skip-deadline-if-done t)
-- (setq org-agenda-skip-scheduled-if-done t)
+- =(setq org-agenda-skip-deadline-if-done t)=
+- =(setq org-agenda-skip-scheduled-if-done t)=
 - checking the todo list
 - buffer restrictions (file & narrow-to-subtree)
 - agenda narrowing (by tag, by regexp, / / = |)
 - tag match
 - todo/properties/scheduled match
 - . in the agenda to go back to today
-- v d / v w / v m to change the agenda span
-- setting tags (C-c C-q)
-- properties (C-c C-x p)
-- column view (C-c C-x c)
-- agenda view (C-c a) : custom keybinding
+- =v d= / =v w= / =v m= to change the agenda span
+- =C-c C-q= : setting tags
+- =C-c C-x p= : setting properties
+- =C-c C-x c= : column view
+- =C-c a= : agenda view + custom keybinding
 - agenda files
 - custom agenda view
-- capture (C-c c)
-- refiling (C-c C-w)
-- org-goto (C-c C-j)
-- demote with S-M-<left/right> to preserve the structure
-- C-c C-x C-r to insert the clock table
-- C-c C-x e to insert the "Effort" property
-- #+COLUMNS: %40ITEM(Task) %10Effort(Effort){:} %CLOCKSUM
+- =C-c c= : =org-capture=
+- =C-c C-w= : =org-refile=
+- =C-c C-j= : =org-goto=
+- demote with =S-M-<left/right>= to preserve the structure
+- =C-c C-x C-r= : insert the clock table
+- =C-c C-x e= : insert the "Effort" property
+- =#+COLUMNS: %40ITEM(Task) %10Effort(Effort){:} %CLOCKSUM=
 - Effort_all
 
 * Using string-match
 
-# Careful about using match-string with TWO args after string-match
 #+BEGIN_SRC emacs-lisp
+;; Careful about using match-string with TWO args after string-match
 (if (string-match "\\<abc\\>" " abc ")
     (match-string 0 " abc "))
 #+END_SRC
 
 * Eq and equal
 
-eq = same object
-equal = same content (have equal component)
+- eq = same object
+- equal = same content (have equal component)
 
 * Dynamic binding
 
@@ -185,22 +185,22 @@ equal = same content (have equal component)
 
 - https://www.emacswiki.org/emacs/SampleMode
 - https://www.emacswiki.org/emacs/ModeTutorial
-- require, provide, (featurep 'sns)
-- defvar
-- font-lock-add-keywords (font-lock-defaults)
-- comment-start and comment-start-skip
-- paragraph-start and paragraph-separate
-- syntax-table
+- =require=, =provide=, (featurep 'sns)
+- =defvar=
+- =font-lock-add-keywords= (font-lock-defaults)
+- =comment-start= and =comment-start-skip=
+- =paragraph-start= and =paragraph-separate=
+- =syntax-table=
 - local map (and keybindings)
-- [indent-line-function]
-- [easy-menu-define]
-- [hooks] sns-mode-hook
-- outline-regexp
-- defcustom
+- =indent-line-function=
+- =easy-menu-define=
+- hooks
+- =outline-regexp=
+- =defcustom=
 - autoloads
-- [buffer navigation functions]
+- buffer navigation functions
 - manipulating overlays
-- [text properties]
+- text properties
 
 * Example for Org-column
 ** STRT Task 1

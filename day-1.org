@@ -4,71 +4,72 @@
 
 - function vs command : commands are interactive functions
 - variable and option : options are customizable variables
-- C-h v : describe variables and options
-- C-h f : describe functions and commands
-- C-h k : describe key
-- last-command : variable containing the last command
-- this-command : variable containing the command being executed
+- =C-h v= : describe variables and options
+- =C-h f= : describe functions and commands
+- =C-h k= : describe key
+- =last-command= : variable containing the last command
+- =this-command= : variable containing the command being executed
 - mark : the mark is generally interactively set with C-SPC
-- C-u C-SPC (or C-u C-@) : cycle through the local mark ring
-- C-x C-SPC (or C-x C-@) : cycle through the global mark ring
+- =C-u C-SPC= (or =C-u C-@=) : cycle through the local mark ring
+- =C-x C-SPC= (or =C-x C-@=) : cycle through the global mark ring
 - selection : the selection is not necessarily highlighted
 - region : the selection is not necessarily highlighted
-- (transient-mark-mode 1) : toggle the highlighting of the region
+- =(transient-mark-mode 1)= : toggle the highlighting of the region
 - M-x customize-face RET region : set the "region" face
-- string-rectangle : C-x r t : insert text at the beginning of the region
-- C-M-\ : indent-region
-- C-l : recenter
+- =C-x r t= : =string-rectangle= : insert text at the beginning of the region
+- =C-M-\= : =indent-region=
+- =C-l= : =recenter=
 
 * Manipulating Lisp and symbolic expressions (sexps)
 
-- C-M-f : forward sexp
-- C-M-b : backend sexp
-- C-M-a : beginning of defun
-- C-M-e : end of defun
-- C-M-k : kill sexp
-- C-M-@ : mark sexp
+- =C-M-f= : forward sexp
+- =C-M-b= : backend sexp
+- =C-M-a= : beginning of defun
+- =C-M-e= : end of defun
+- =C-M-k= : kill sexp
+- =C-M-@= : mark sexp
 
 * Org-mode movement
 
-- M-RET / M-<up/down> / M-<left/right>
-- C-c C-t : add TODO keywords
-- S-<left/right> : switch TODO keywords
-- C-u C-c C-c : on lists, add/remove checkboxes
-- M-h (then repeat) : select current element
-- C-h v org-special-ctrl-a/e RET (t is a good choice)
-- <s at the beginning of a line to insert code block
-- C-h org-src-fontify-natively RET (t is a good choice)
-- C-c ^ : org-sort (in lists, tables, subtrees, buffer)
-- M-<up/down> to move up/down paragraphs
-- C-x C-e to eval the sexp (both in emacs-lisp-mode and org-mode)
+- =M-RET= / =M-<up/down>= / =M-<left/right>=
+- =C-c C-t= : add TODO keywords
+- =S-<left/right>= : switch TODO keywords
+- =C-u C-c C-c= : on lists, add/remove checkboxes
+- =M-h= (then repeat) : select current element
+- =C-h v org-special-ctrl-a/e RET= (t is a good choice)
+- =<s= at the beginning of a line to insert code block
+- =C-h org-src-fontify-natively RET= (t is a good choice)
+- =C-c ^= : =org-sort= (in lists, tables, subtrees, buffer)
+- =M-<up/down>= to move up/down paragraphs
+- =C-x C-e= to eval the sexp (both in emacs-lisp-mode and org-mode)
 
 * Search
 
-- C-s C-w : to search for the word at point
-- C-s M-e : to edit the current search string
-- C-s M-p/n : browse the search history
-- C-s C-M-i : complete over the search history
-- C-s M-s r : toggle regexp search (very handy!)
-- C-s M-s o : run occur on the current search string
-- C-s M-s c : toggle case-folding
-- C-s M-s SPC : toggle whitespace lax search
+- =C-s C-w= : to search for the word at point
+- =C-s M-e= : to edit the current search string
+- =C-s M-p/n= : browse the search history
+- =C-s C-M-i= : complete over the search history
+- =C-s M-s r= : toggle regexp search (very handy!)
+- =C-s M-s o= : run occur on the current search string
+- =C-s M-s c= : toggle case-folding
+- =C-s M-s SPC= : toggle whitespace lax search
 
 * Dired
 
-- M-x dired RET
-- m to mark files
-- t to toggle marks
-- C-x C-q to toggle read-only mode
-- Q to replace-regexp in selected files
-- M-x find-grep RET : run find and exec grep
-- M-x rgrep RET : recursively grep
+- =M-x dired RET=
+- =m= to mark files
+- =t= to toggle marks
+- =C-x C-q= to toggle read-only mode
+- =Q= to replace-regexp in selected files
+- =M-x find-grep RET= : run find and exec grep
+- =M-x rgrep RET= : recursively grep
 
 * Org-mode caldav
+
 * Regular expressions
 
 - introduction to the re syntax
-- use within re-search-forward
+- use within =re-search-forward=
 
 * Interactive calls
 
@@ -76,17 +77,17 @@ Exploring [[info:elisp#Interactive%20Call][interactive]].
 
 * Narrowing C-x n
 
-C-x n n : narrow-to-region
-C-x n s : narrow-to-subtree
-C-x n w : widen
+- =C-x n n= : =narrow-to-region=
+- =C-x n s= : =narrow-to-subtree=
+- =C-x n w= : =widen=
 
 * Save match data
 
-- save-match-data
+- =save-match-data=
 
 * Instrumenting a function
 
-- M-x edebug-defun RET
+- =M-x edebug-defun RET=
 
 * 15 minutes tutorial emacs-doctor
 
@@ -94,19 +95,18 @@ Check http://emacs-doctor.com/learn-emacs-lisp-in-15-minutes.html
 
 What's new in this tutorial:
 
-- lisp-interaction-mode
-- switch-to-buffer-other-window
-- get-buffer-create
-- erase-buffer
-- insert
-- format
-- (progn (+ 1 2) (+ 3 5))
-- (setq myliste '(1 2)) (push 0 myliste)
-- (mapcar (lambda(s) (1+ s))  '(1 2))
-- (mapconcat (lambda(s) (concat s "@")) '("a" "b" "c") "-")
-- while
-- replace-match
-- add-text-properties
-- other-window
-- car cdr
-
+- =lisp-interaction-mode=
+- =switch-to-buffer-other-window=
+- =get-buffer-create=
+- =erase-buffer=
+- =insert=
+- =format=
+- =(progn (+ 1 2) (+ 3 5))=
+- =(setq myliste '(1 2)) (push 0 myliste)=
+- =(mapcar (lambda(s) (1+ s))  '(1 2))=
+- =(mapconcat (lambda(s) (concat s "@")) '("a" "b" "c") "-")=
+- =while=
+- =replace-match=
+- =add-text-properties=
+- =other-window=
+- =car=, =cdr=

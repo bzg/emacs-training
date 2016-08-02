@@ -17,8 +17,8 @@
 
 * A macro with a counter (in dired)
 
-- C-x d [go to a directory with fake files] RET
-- C-x C-q to toggle off read-only mode in dired
+- =C-x d= [go to a directory with fake files] RET
+- =C-x C-q= to toggle off read-only mode in dired
 - create a macro to rename multiple files using a counter (file1.txt,
   file2.txt, etc.)
 
@@ -62,12 +62,12 @@
 
 * Org table manipulations
 
-- create a table (=org-table-create=)
+- create a table (see =org-table-create=)
 - select the table
 - unselect the table
 - move from cell to cell with TAB
-- M-<up/down> to move lines
-- M-<lef/right> to move columns
+- =M-<up/down>= to move lines
+- =M-<lef/right>= to move columns
 - =org-table-transpose-table-at-point=
 - =C-c }= to toggle coordinates
 - insert a new column
@@ -75,7 +75,7 @@
 
 * Org spreadsheets formulas
 
-- create a table (=org-table-create=)
+- create a table (see =org-table-create=)
 - add some names in the first row
 - add some disciplines in the first column
 - add numbers in the lines below (e.g. marks for exams)
@@ -90,9 +90,9 @@
 * Org list manipulation
 
 - make a list
-- use M-RET to create a new item
-- M-<up/down> to move items up/down
-- M-<lef/right> to promote/demote items
+- use =M-RET= to create a new item
+- =M-<up/down>= to move items up/down
+- =M-<lef/right>= to promote/demote items
 - go in the middle of the last item
 - create a new item by splitting the current one
 - turn the current item into a checkbox item
@@ -106,7 +106,7 @@
 
 * Add keybindings
 
-- add a fundamental-mode keybinding
+- add a =fundamental-mode= keybinding
 - add a global keybinding
 - unbind a key globally
 
@@ -122,14 +122,14 @@
 - narrow to the current paragraph
 - narrow to the current defun
 - narrow to the current sexp
-- check (point-min) (point-max) (buffer-size)
+- check =(point-min)= =(point-max)= =(buffer-size)=
 
 ** Functions to check
 
-- mark-sexp
-- buffer-narrowed-p
-- save-restriction
-- save-window-restiction (use with care)
+- =mark-sexp=
+- =buffer-narrowed-p=
+- =save-restriction=
+- =save-window-restiction= (use with care)
 
 * Saving various buffer state
 
@@ -147,12 +147,12 @@
 
   You can check these functions:
 
-  - beginning-of-buffer
-  - end-of-buffer
-  - bobp (aka "is it the beginning of the buffer?")
-  - eobp (aka "is it the end of the buffer?")
-  - (goto-char (point-min))
-  - (re-search-backward "\\`" nil t)
+  - =beginning-of-buffer=
+  - =end-of-buffer=
+  - =bobp= (aka "is it the beginning of the buffer?")
+  - =eobp= (aka "is it the end of the buffer?")
+  - =(goto-char (point-min))=
+  - =(re-search-backward "\\`" nil t)=
 
 - Find the last word before the end of the current sentence.  Return
   the position of the first character of the word in the first match.
@@ -163,13 +163,13 @@
 
 ** Functions to check
 
-- save-excursion
-- save-restriction
-- save-match-data
-- save-window-excursion
-- match-beginning
-- match-end
-- match-string
+- =save-excursion=
+- =save-restriction=
+- =save-match-data=
+- =save-window-excursion=
+- =match-beginning=
+- =match-end=
+- =match-string=
 
 * Interactive buffer manipulations
 
@@ -191,34 +191,34 @@
 
 ** Functions to check
 
-- sort
-- buffer-list
-- buffer-size
-- buffer-string
-- buffer-substring
-- get-buffer-create
-- switch-to-buffer-other-window
-- with-buffer-modified-unmodified
-- with-current-buffer
-- with-current-buffer-window
-- with-output-to-string
-- with-output-to-temp-buffer
-- with-temp-buffer
-- with-temp-buffer-window
-
+- sort 
+- buffer-list 
+- buffer-size 
+- buffer-string 
+- buffer-substring 
+- get-buffer-create 
+- switch-to-buffer-other-window 
+- with-buffer-modified-unmodified 
+- with-current-buffer 
+- with-current-buffer-window 
+- with-output-to-string 
+- with-output-to-temp-buffer 
+- with-temp-buffer 
+- with-temp-buffer-window 
+  
 * Navigating in Elisp code
 
-- C-M-a: beginning-of-defun
-- C-M-e: end-of-defun
-- C-M-x: eval-defun
-- C-u C-M-x: eval-defun and edebug it
-- C-M-f: forward-sexp
-- C-M-b: backward-sexp
-- C-M-u: forward-sexp
-- C-M-d: down-list
-- C-M-k: kill-sexp
-- C-M-p: backward-list
-- C-M-n: forward-list
+- =C-M-a= : =beginning-of-defun=
+- =C-M-e= : =end-of-defun=
+- =C-M-x= : =eval-defun=
+- =C-u C-M-x= : =eval-defun= and edebug it
+- =C-M-f= : =forward-sexp=
+- =C-M-b= : =backward-sexp=
+- =C-M-u= : =forward-sexp=
+- =C-M-d= : =down-list=
+- =C-M-k= : =kill-sexp=
+- =C-M-p= : =backward-list=
+- =C-M-n= : =forward-list=
 
 * Handling errors in code
 
@@ -234,11 +234,11 @@
 
 ** Functions to check
 
-- condition-case
-- unwind-protect
-- ignore-errors
-- user-error
-- error
+- =condition-case=
+- =unwind-protect=
+- =ignore-errors=
+- =user-error=
+- =error=
 
 * Defining variables and options
 
@@ -259,17 +259,12 @@
 
 * Manipulating strings
 
-Make a list of 20 (possibly identical) characters.
-
-Create a new string by concatenating the list of characters.
-
-Return a string of the first 5 characters from this string.
-
-Store the buffer string in a variable.
-
-Replace tabs by spaces in this string.
-
-Return the number of lines in this string.
+- Make a list of 20 (possibly identical) characters.
+- Create a new string by concatenating the list of characters.
+- Return a string of the first 5 characters from this string.
+- Store the buffer string in a variable.
+- Replace tabs by spaces in this string.
+- Return the number of lines in this string.
 
 * Using interactive
 
@@ -381,9 +376,9 @@ numerical value.
 
 ** Hints
 
-- make-list
-- random
-- (sort '(1 2 4 3) '<)
+- =make-list=
+- =random=
+- =(sort '(1 2 4 3) '<)=
 
 * Use a recursive function to implement "flatten"
 
