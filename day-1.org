@@ -91,7 +91,7 @@ Exploring [[info:elisp#Interactive%20Call][interactive]].
 
 * 15 minutes tutorial emacs-doctor
 
-Check http://emacs-doctor.com/learn-emacs-lisp-in-15-minutes.html
+Check https://bzg.fr/en/learn-emacs-lisp-in-15-minutes.html/
 
 What's new in this tutorial:
 
